@@ -1,0 +1,2 @@
+apply from: "$rootDir/gradle/configuration/build/kotlin_module.gradle"
+apply from: "$rootDir/gradle/configuration/publish/publish_kotlin_library.gradle"

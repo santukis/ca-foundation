@@ -1,0 +1,2 @@
+apply from: "$rootDir/gradle/configuration/build/android_module.gradle"
+apply from: "$rootDir/gradle/configuration/publish/publish_android_library.gradle"

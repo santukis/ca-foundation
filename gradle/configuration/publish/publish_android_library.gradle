@@ -1,0 +1,17 @@
+apply from: "$rootDir/gradle/configuration/publish/publish_library.gradle"
+
+publishing {
+    publications {
+        "github$libArtifactId"(MavenPublication) {
+            groupId = libGroup
+            artifactId = libArtifactId
+            version = libVersion
+            artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+            pom.withXml {
+                def node = asNode().appendNode("dependencies")
+                DependencySet dependencies = configurations.implementation.getDependencies()
+                addDependencies(node, dependencies)
+            }
+        }
+    }
+}

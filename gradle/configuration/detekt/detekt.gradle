@@ -1,0 +1,19 @@
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+allprojects {
+    detekt {
+        buildUponDefaultConfig = true
+        allRules = false
+        autoCorrect = true
+        config.setFrom(file("$rootDir/gradle/configuration/detekt/detekt-config.yml"))
+        reports {
+            xml.required.set(true)
+            html.required.set(true)
+            txt.required.set(false)
+        }
+    }
+
+    dependencies {
+        detektPlugins(libs.bundles.detekt)
+    }
+}

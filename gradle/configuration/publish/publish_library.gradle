@@ -1,0 +1,47 @@
+apply plugin: "maven-publish"
+
+def publishProperties = new Properties()
+file("publish.properties").withInputStream { stream -> publishProperties.load(stream) }
+
+ext.libGroup = "com.santukis.ca"
+ext.libArtifactId = publishProperties['artifact']
+ext.libVersion = publishProperties['version']
+
+ext.addDependencies = { Node node, DependencySet dependencies ->
+    dependencies.each { dependency ->
+        def dependencyNode = node.appendNode("dependency")
+
+        if (dependency instanceof ProjectDependency) {
+            def dependencyProject = dependency.getDependencyProject()
+
+            def dependencyProjectPublishProperties = new Properties()
+            file("${dependencyProject.projectDir}/publish.properties").withInputStream { stream ->
+                dependencyProjectPublishProperties.load(stream)
+            }
+            def dependencyProjectArtifactId = dependencyProjectPublishProperties['artifact']
+            def dependencyProjectVersion = dependencyProjectPublishProperties['version']
+
+            dependencyNode.appendNode("groupId", libGroup)
+            dependencyNode.appendNode("artifactId", dependencyProjectArtifactId)
+            dependencyNode.appendNode("version", dependencyProjectVersion)
+
+        } else {
+            dependencyNode.appendNode("groupId", dependency.group)
+            dependencyNode.appendNode("artifactId", dependency.name)
+            dependencyNode.appendNode("version", dependency.version)
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/santukis/ca-foundation"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}

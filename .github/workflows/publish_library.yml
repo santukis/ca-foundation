@@ -1,19 +1,14 @@
 name: Publish release
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
+    tags:
+      - "v*.*.*"
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          title: "Development Build"
-          files: |
-            *.jar
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1

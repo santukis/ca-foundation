@@ -1,4 +1,4 @@
-package com.santukis.usecase.input
+package com.santukis.domain.usecases.input
 
 interface UseCase<Params, Result> {
     suspend operator fun invoke(params: Params): Result

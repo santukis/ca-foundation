@@ -1,7 +1,9 @@
 apply plugin: "maven-publish"
 
 def publishProperties = new Properties()
-file("publish.properties").withInputStream { stream -> publishProperties.load(stream) }
+file("publish.properties").withInputStream { stream ->
+    publishProperties.load(stream)
+}
 
 ext.libGroup = "com.santukis.ca"
 ext.libArtifactId = publishProperties['artifact']
@@ -15,9 +17,10 @@ ext.addDependencies = { Node node, DependencySet dependencies ->
             def dependencyProject = dependency.getDependencyProject()
 
             def dependencyProjectPublishProperties = new Properties()
-            file("${dependencyProject.projectDir}/publish.properties").withInputStream { stream ->
-                dependencyProjectPublishProperties.load(stream)
-            }
+            file("${dependencyProject.projectDir}/publish.properties")
+                    .withInputStream { stream ->
+                        dependencyProjectPublishProperties.load(stream)
+                    }
             def dependencyProjectArtifactId = dependencyProjectPublishProperties['artifact']
             def dependencyProjectVersion = dependencyProjectPublishProperties['version']
 

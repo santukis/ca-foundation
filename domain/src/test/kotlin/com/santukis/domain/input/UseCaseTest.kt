@@ -1,4 +1,4 @@
-package com.santukis.usecase.input
+package com.santukis.domain.input
 
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

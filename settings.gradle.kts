@@ -26,8 +26,7 @@ include(":sample:featureB")
 include(":sample:featureC")
 include(":sample:featureD")
 
-include(":domain:usecase:input")
-include(":domain:usecase:output")
+include(":domain")
 
 include(":ui:navigation")
 include(":ui:theme")

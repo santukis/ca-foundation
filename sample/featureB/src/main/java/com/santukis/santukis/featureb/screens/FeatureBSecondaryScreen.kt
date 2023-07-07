@@ -17,14 +17,14 @@ import androidx.compose.ui.graphics.Color
 import com.santukis.navigation.NavigationArguments
 import com.santukis.santukis.featureb.navigation.arguments.ToFeatureBLandingResultArguments
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeatureBSecondaryScreen(
-    navigateTo: (NavigationArguments) -> Unit
+    navigateTo: (NavigationArguments) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color.Yellow)
     ) {
@@ -34,7 +34,7 @@ fun FeatureBSecondaryScreen(
 
         TextField(
             value = inputText,
-            onValueChange = { inputText = it}
+            onValueChange = { inputText = it }
         )
 
         Button(onClick = { navigateTo(ToFeatureBLandingResultArguments(inputText)) }) {

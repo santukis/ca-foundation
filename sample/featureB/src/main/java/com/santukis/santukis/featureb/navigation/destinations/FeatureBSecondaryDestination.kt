@@ -17,10 +17,12 @@ class FeatureBSecondaryDestination : ScreenDestination {
         router: Router,
         backStackEntry: NavBackStackEntry
     ) {
-        FeatureBSecondaryScreen { arguments ->
-            when(arguments) {
-                is ToFeatureBLandingResultArguments -> router.setResult(arguments)
+        FeatureBSecondaryScreen(
+            navigateTo = { arguments ->
+                when (arguments) {
+                    is ToFeatureBLandingResultArguments -> router.setResult(arguments)
+                }
             }
-        }
+        )
     }
 }

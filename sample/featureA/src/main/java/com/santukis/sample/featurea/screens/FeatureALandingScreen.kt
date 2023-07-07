@@ -19,10 +19,11 @@ import com.santukis.sample.featurea.navigation.arguments.ToSecondaryScreenArgume
 
 @Composable
 fun FeatureALandingScreen(
-    navigateTo: (NavigationArguments) -> Unit
+    navigateTo: (NavigationArguments) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color.Cyan)
     ) {

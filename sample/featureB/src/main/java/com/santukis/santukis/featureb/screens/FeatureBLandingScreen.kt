@@ -8,7 +8,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -20,10 +19,11 @@ import com.santukis.santukis.featureb.navigation.arguments.ToSecondaryScreenArgu
 @Composable
 fun FeatureBLandingScreen(
     anyParam: String,
-    navigateTo: (NavigationArguments) -> Unit
+    navigateTo: (NavigationArguments) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color.Yellow)
     ) {

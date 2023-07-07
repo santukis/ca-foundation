@@ -18,12 +18,14 @@ object FeatureALandingDestination : ScreenDestination {
         router: Router,
         backStackEntry: NavBackStackEntry
     ) {
-        FeatureALandingScreen { arguments ->
-            when (arguments) {
-                is ToFeatureCArguments -> router.navigateForResult(arguments)
-                is ToFeatureDArguments -> router.navigateForResult(arguments)
-                is DestinationArguments -> router.navigate(arguments)
+        FeatureALandingScreen(
+            navigateTo = { arguments ->
+                when (arguments) {
+                    is ToFeatureCArguments -> router.navigateForResult(arguments)
+                    is ToFeatureDArguments -> router.navigateForResult(arguments)
+                    is DestinationArguments -> router.navigate(arguments)
+                }
             }
-        }
+        )
     }
 }

@@ -16,10 +16,12 @@ class FeatureASecondaryDestination : ScreenDestination {
         router: Router,
         backStackEntry: NavBackStackEntry
     ) {
-        FeatureASecondaryScreen { arguments ->
-            when (arguments) {
-                is PopBackStack -> router.popBackStack()
+        FeatureASecondaryScreen(
+            navigateTo = { arguments ->
+                when (arguments) {
+                    is PopBackStack -> router.popBackStack()
+                }
             }
-        }
+        )
     }
 }

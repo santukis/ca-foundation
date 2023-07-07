@@ -30,12 +30,13 @@ object FeatureCLandingDestination : ScreenDestination {
         backStackEntry: NavBackStackEntry
     ) {
         FeatureCLandingScreen(
-            anyParam = backStackEntry.arguments?.getString(ANY_PARAM_KEY).orEmpty()
-        ) { arguments ->
+            anyParam = backStackEntry.arguments?.getString(ANY_PARAM_KEY).orEmpty(),
+            navigateTo = { arguments ->
 
-            when(arguments) {
-                is ToFeatureAResultArguments -> router.setResult(arguments = arguments)
+                when (arguments) {
+                    is ToFeatureAResultArguments -> router.setResult(arguments = arguments)
+                }
             }
-        }
+        )
     }
 }

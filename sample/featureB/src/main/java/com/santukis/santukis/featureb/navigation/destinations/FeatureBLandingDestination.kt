@@ -31,13 +31,14 @@ object FeatureBLandingDestination : ScreenDestination {
         backStackEntry: NavBackStackEntry
     ) {
         FeatureBLandingScreen(
-            anyParam = backStackEntry.arguments?.getString(ANY_PARAM_KEY).orEmpty()
-        ) { arguments ->
+            anyParam = backStackEntry.arguments?.getString(ANY_PARAM_KEY).orEmpty(),
+            navigateTo = { arguments ->
 
-            when(arguments) {
-                is ToSecondaryScreenArguments -> router.navigateForResult(arguments = arguments)
-                is PopBackStack -> router.popBackStack()
+                when (arguments) {
+                    is ToSecondaryScreenArguments -> router.navigateForResult(arguments = arguments)
+                    is PopBackStack -> router.popBackStack()
+                }
             }
-        }
+        )
     }
 }

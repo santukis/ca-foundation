@@ -18,11 +18,12 @@ import com.santukis.sample.featured.navitation.arguments.ToFeatureAResultArgumen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeatureDLandingScreen(
-    anyParam: String = "",
-    navigateTo: (NavigationArguments) -> Unit
+    anyParam: String,
+    navigateTo: (NavigationArguments) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color.Green)
     ) {

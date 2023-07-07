@@ -22,10 +22,11 @@ import com.santukis.sample.featurec.navigation.arguments.ToFeatureAResultArgumen
 @Composable
 fun FeatureCLandingScreen(
     anyParam: String,
-    navigateTo: (NavigationArguments) -> Unit
+    navigateTo: (NavigationArguments) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color.Magenta)
     ) {

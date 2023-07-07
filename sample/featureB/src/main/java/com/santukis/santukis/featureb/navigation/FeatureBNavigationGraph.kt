@@ -15,7 +15,6 @@ class FeatureBNavigationGraph : NavigationGraph {
             startDestination = FeatureBLandingDestination.template,
             route = "FeatureBNavigationGraph",
         ) {
-
             navigate(
                 router = router,
                 destination = FeatureBLandingDestination

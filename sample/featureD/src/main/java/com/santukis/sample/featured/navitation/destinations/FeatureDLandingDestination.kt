@@ -13,5 +13,4 @@ object FeatureDLandingDestination : ActivityDestination {
 
     override fun getActivityDestination(): KClass<out Activity>? =
         FeatureDActivity::class
-
 }

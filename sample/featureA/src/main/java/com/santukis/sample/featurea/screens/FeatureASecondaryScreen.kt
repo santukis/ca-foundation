@@ -13,10 +13,11 @@ import com.santukis.navigation.PopBackStack
 
 @Composable
 fun FeatureASecondaryScreen(
-    navigateTo: (NavigationArguments) -> Unit
+    navigateTo: (NavigationArguments) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color.Cyan)
     ) {

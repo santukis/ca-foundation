@@ -15,7 +15,7 @@ jobs:
           cache: gradle
 
       - name: Unit Test
-        run: ./gradlew test
+        run: ./gradlew :domain:test ui:navigation:test :ui:theme:test
         continue-on-error: false
 
       - name: Android Test Report

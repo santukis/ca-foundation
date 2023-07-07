@@ -1,0 +1,4 @@
+<resources>
+    <style name="Theme.Scaffold" parent="android:Theme.Material.NoActionBar">
+    </style>
+</resources>

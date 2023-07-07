@@ -4,7 +4,7 @@ on:
     types: [created]
 jobs:
   publish:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write

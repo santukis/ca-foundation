@@ -24,24 +24,26 @@ jobs:
 
       - name: Check if Major version
         run: |
-          echo "VERSION_INCREMENT=-M" >> $GITHUB_ENV
+          echo "VERSION_INCREMENT=major" >> $GITHUB_ENV
         if: startsWith(github.event.pull_request.title, 'Major')
 
       - name: Check if Minor version
         run: |
-          echo "VERSION_INCREMENT=-m" >> $GITHUB_ENV
+          echo "VERSION_INCREMENT=minor" >> $GITHUB_ENV
         if: startsWith(github.event.pull_request.title, 'Minor')
 
       - name: Check if Patch version
         run: |
-          echo "VERSION_INCREMENT=-p" >> $GITHUB_ENV
+          echo "VERSION_INCREMENT=patch" >> $GITHUB_ENV
         if: startsWith(github.event.pull_request.title, 'Patch')
 
       - name: Set next version
-        uses: Benbentwo/increment-semver@master
+        uses: MCKanpolat/auto-semver-action@v1
         id: version
         with:
-          version-level: ${{ env.VERSION_INCREMENT }}
+          releaseType: ${{ env.VERSION_INCREMENT }}
+          incrementPerCommit: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release
         uses: softprops/action-gh-release@v1

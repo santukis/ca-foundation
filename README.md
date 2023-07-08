@@ -1,0 +1,1 @@
+[![Latest Deployment](https://github.com/santukis/ca-foundation/actions/workflows/deploy_kotlin_library.yml/badge.svg)](https://github.com/santukis/ca-foundation/actions/workflows/deploy_kotlin_library.yml)

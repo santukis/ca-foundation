@@ -1,13 +1,14 @@
-apply plugin: "maven-publish"
+apply plugin: 'maven-publish'
 
 def publishProperties = new Properties()
+
 file("publish.properties").withInputStream { stream ->
     publishProperties.load(stream)
 }
 
 ext.libGroup = "com.santukis.ca"
 ext.libArtifactId = publishProperties['artifact']
-ext.libVersion = publishProperties['version']
+ext.libVersion = System.getenv("GITHUB_VERSION") ?: "0.0.0"
 
 ext.addDependencies = { Node node, DependencySet dependencies ->
     dependencies.each { dependency ->
@@ -15,18 +16,16 @@ ext.addDependencies = { Node node, DependencySet dependencies ->
 
         if (dependency instanceof ProjectDependency) {
             def dependencyProject = dependency.getDependencyProject()
-
             def dependencyProjectPublishProperties = new Properties()
+
             file("${dependencyProject.projectDir}/publish.properties")
                     .withInputStream { stream ->
                         dependencyProjectPublishProperties.load(stream)
                     }
-            def dependencyProjectArtifactId = dependencyProjectPublishProperties['artifact']
-            def dependencyProjectVersion = dependencyProjectPublishProperties['version']
 
             dependencyNode.appendNode("groupId", libGroup)
-            dependencyNode.appendNode("artifactId", dependencyProjectArtifactId)
-            dependencyNode.appendNode("version", dependencyProjectVersion)
+            dependencyNode.appendNode("artifactId", dependencyProjectPublishProperties['artifact'])
+            dependencyNode.appendNode("version", libVersion)
 
         } else {
             dependencyNode.appendNode("groupId", dependency.group)

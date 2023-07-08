@@ -41,7 +41,7 @@ jobs:
         id: version
         with:
           scheme: semver
-          increment: $VERSION_INCREMENT
+          increment: ${{ env.VERSION_INCREMENT }}
 
       - name: Release
         uses: softprops/action-gh-release@v1

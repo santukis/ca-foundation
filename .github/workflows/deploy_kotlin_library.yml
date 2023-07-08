@@ -24,17 +24,17 @@ jobs:
 
       - name: Check if Major version
         run: |
-          echo "VERSION_INCREMENT='-M'" >> $GITHUB_ENV
+          echo "VERSION_INCREMENT=-M" >> $GITHUB_ENV
         if: startsWith(github.event.pull_request.title, 'Major')
 
       - name: Check if Minor version
         run: |
-          echo "VERSION_INCREMENT='-m'" >> $GITHUB_ENV
+          echo "VERSION_INCREMENT=-m" >> $GITHUB_ENV
         if: startsWith(github.event.pull_request.title, 'Minor')
 
       - name: Check if Patch version
         run: |
-          echo "VERSION_INCREMENT='-p'" >> $GITHUB_ENV
+          echo "VERSION_INCREMENT=-p" >> $GITHUB_ENV
         if: startsWith(github.event.pull_request.title, 'Patch')
 
       - name: Set next version

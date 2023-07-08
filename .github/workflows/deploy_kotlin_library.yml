@@ -42,6 +42,7 @@ jobs:
         id: version
         with:
           scheme: semver
+          pep440: true
           increment: ${{ env.VERSION_INCREMENT }}
 
       - name: Release

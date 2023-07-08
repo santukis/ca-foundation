@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
     types:
-      - created
+      - opened
 
 jobs:
   setupJDK:

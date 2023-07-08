@@ -47,6 +47,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.version.outputs.version }}
+        env:
+          GITHUB_REPOSITORY: santukis/ca-foundation
 
       - name: Set up Java Sdk 17
         uses: actions/setup-java@v3

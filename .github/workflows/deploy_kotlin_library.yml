@@ -1,16 +1,52 @@
-name: Deploy library to GitHub Packages
+name: Create Release and Deploy library to GitHub Packages
+
 on:
-  release:
-    types: [created]
+  pull_request:
+    branches: [main]
+    types:
+      - closed
+
 jobs:
   publish:
+    name: Create Release
+    if: github.event.pull_request.merged == true
+
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
+
     steps:
-      - name: Download code
+      - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Check if Major version
+        run: |
+          echo "VERSION_INCREMENT=major" >> $GITHUB_ENV
+        if: startsWith(github.event.pull_request.title, 'Major')
+
+      - name: Check if Minor version
+        run: |
+          echo "VERSION_INCREMENT=minor" >> $GITHUB_ENV
+        if: startsWith(github.event.pull_request.title, 'Minor')
+
+      - name: Check if Patch version
+        run: |
+          echo "VERSION_INCREMENT=patch" >> $GITHUB_ENV
+        if: startsWith(github.event.pull_request.title, 'Patch')
+
+      - name: Set next version
+        uses: reecetech/version-increment@2023.4.1
+        id: version
+        with:
+          scheme: semver
+          increment: $VERSION_INCREMENT
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
 
       - name: Set up Java Sdk 17
         uses: actions/setup-java@v3
@@ -30,4 +66,5 @@ jobs:
         with:
           arguments: publish
         env:
+          GITHUB_VERSION: ${{ steps.version.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

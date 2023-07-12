@@ -9,6 +9,8 @@ import androidx.navigation.compose.rememberNavController
 
 interface Router {
 
+    val navController: NavHostController
+
     fun navigate(arguments: DestinationArguments, builder: NavOptionsBuilder.() -> Unit = {})
 
     fun popBackStack()
@@ -29,7 +31,7 @@ interface Router {
 
 internal class DefaultRouter(
     private val argumentsMapper: DestinationArgumentsMapper,
-    private val navController: NavHostController
+    override val navController: NavHostController
 ) : Router {
 
     companion object {

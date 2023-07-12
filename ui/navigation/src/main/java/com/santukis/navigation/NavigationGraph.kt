@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 interface NavigationGraph {
 
     fun NavGraphBuilder.buildGraph(router: Router)
+
+    fun getStartDestination(): String
 }
 
 fun NavGraphBuilder.navigate(

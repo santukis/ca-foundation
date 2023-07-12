@@ -20,11 +20,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ca-foundation"
-include(":sample:app")
-include(":sample:featureA")
-include(":sample:featureB")
-include(":sample:featureC")
-include(":sample:featureD")
+include(":sample:ui:app")
+include(":sample:ui:featureA")
+include(":sample:ui:featureB")
+include(":sample:ui:featureC")
+include(":sample:ui:featureD")
 
 include(":domain")
 

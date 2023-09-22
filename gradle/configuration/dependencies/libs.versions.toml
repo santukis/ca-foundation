@@ -15,6 +15,7 @@ detektCompose = "0.1.2"
 espresso = "3.5.1"
 junit = "4.13.2"
 junit5 = "5.9.3"
+koin = "3.5.0"
 lifecycle = "2.4.1"
 
 [libraries]
@@ -45,6 +46,10 @@ detekt-api = { module = "io.gitlab.arturbosch.detekt:detekt-api", version.ref = 
 detekt-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 detekt-test = { module = "io.gitlab.arturbosch.detekt:detekt-test", version.ref = "detekt" }
+
+injection-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+injection-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+injection-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidTest" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
@@ -86,6 +91,12 @@ detekt = [
     "detekt-test"
 ]
 
+injection = [
+    "injection-koin-core",
+    "injection-koin-android",
+    "injection-koin-android-compose"
+]
+
 androidTest = [
     "androidx-junit",
     "androidx-espresso-core"
@@ -95,5 +106,3 @@ test = [
     "junit-jupiter",
     "junit-vintage-engine"
 ]
-
-

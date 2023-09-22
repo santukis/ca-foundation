@@ -1,15 +1,19 @@
 package com.santukis.navigation
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Observer
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptionsBuilder
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.ComposeNavigator
+import androidx.navigation.compose.DialogNavigator
+import org.koin.ext.getFullName
 
 interface Router {
 
-    val navController: NavHostController
+    fun getNavController(): NavHostController
 
     fun navigate(arguments: DestinationArguments, builder: NavOptionsBuilder.() -> Unit = {})
 
@@ -30,17 +34,23 @@ interface Router {
 }
 
 internal class DefaultRouter(
-    private val argumentsMapper: DestinationArgumentsMapper,
-    override val navController: NavHostController
+    context: Context,
+    private val argumentsMapper: ArgumentsMapper
 ) : Router {
 
-    companion object {
-        private const val navigationKey = "navigationKey"
-    }
+    private var navigationKey = "navigationKey"
 
-    override fun navigate(arguments: DestinationArguments, builder: NavOptionsBuilder.() -> Unit) {
-        navController.navigate(arguments.getRoute(), builder)
-    }
+    private val navController: NavHostController = createNavController(context)
+
+    override fun getNavController(): NavHostController = navController
+
+    @Suppress("SwallowedException")
+    override fun navigate(arguments: DestinationArguments, builder: NavOptionsBuilder.() -> Unit) =
+        try {
+            navController.navigate(arguments.getRoute(), builder)
+        } catch (exception: IllegalArgumentException) {
+            // no-op
+        }
 
     override fun popBackStack() {
         navController.popBackStack()
@@ -54,6 +64,7 @@ internal class DefaultRouter(
         arguments: DestinationArgumentsForResult<Result>,
         builder: NavOptionsBuilder.() -> Unit
     ) {
+        navigationKey = this::class.getFullName() + "@" + System.identityHashCode(arguments)
         val liveData = navController
             .currentBackStackEntry
             ?.savedStateHandle
@@ -83,15 +94,29 @@ internal class DefaultRouter(
 
         popBackStack()
     }
+
+    private fun createNavController(context: Context) =
+        NavHostController(context).apply {
+            navigatorProvider.addNavigator(ComposeNavigator())
+            navigatorProvider.addNavigator(DialogNavigator())
+        }
+}
+
+object RouterProvider {
+
+    fun provide(
+        context: Context,
+        argumentsMapper: ArgumentsMapper,
+    ): Router = DefaultRouter(context, argumentsMapper)
 }
 
 @Composable
 fun rememberRouter(
-    argumentsMapper: DestinationArgumentsMapper,
-    navController: NavHostController = rememberNavController(),
-): Router = remember(navController) {
+    argumentsMapper: ArgumentsMapper,
+    context: Context = LocalContext.current
+): Router = remember(argumentsMapper) {
     DefaultRouter(
-        argumentsMapper,
-        navController
+        context,
+        argumentsMapper
     )
 }

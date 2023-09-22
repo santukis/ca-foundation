@@ -20,6 +20,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ca-foundation"
+
 include(":sample:ui:app")
 include(":sample:ui:featureA")
 include(":sample:ui:featureB")
@@ -28,8 +29,10 @@ include(":sample:ui:featureD")
 
 include(":domain")
 
+include(":injection:core")
+
 include(":ui:navigation")
 include(":ui:theme")
-
+include(":ui:components")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

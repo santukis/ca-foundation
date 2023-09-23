@@ -64,7 +64,7 @@ internal class DefaultRouter(
         arguments: DestinationArgumentsForResult<Result>,
         builder: NavOptionsBuilder.() -> Unit
     ) {
-        navigationKey = this::class.getFullName() + "@" + System.identityHashCode(arguments)
+        navigationKey = arguments::class.getFullName() + "@" + System.identityHashCode(arguments)
         val liveData = navController
             .currentBackStackEntry
             ?.savedStateHandle
@@ -75,7 +75,7 @@ internal class DefaultRouter(
                 value?.let {
                     liveData.value = null
                     liveData.removeObserver(this)
-                    arguments.onResult(value)
+                    arguments.onResult(it)
                 }
             }
         })

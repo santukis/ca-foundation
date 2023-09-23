@@ -1,10 +1,10 @@
 package com.santukis.santukis.featureb.di
 
+import com.santukis.injection.core.DependencyInjector
 import com.santukis.injection.providers.koin.KoinDILibrary
 import com.santukis.injection.providers.koin.KoinDIModule
 import com.santukis.navigation.NavigationGraphStore
 import com.santukis.santukis.featureb.FeatureBNavigationGraph
-import org.koin.java.KoinJavaComponent
 
 class FeatureBDILibrary : KoinDILibrary() {
 
@@ -13,8 +13,9 @@ class FeatureBDILibrary : KoinDILibrary() {
             FeatureBDIModule()
         )
 
-    override fun populate() {
-        val store: NavigationGraphStore = KoinJavaComponent.getKoin().get()
-        store.addNavigationGraph(FeatureBNavigationGraph())
+    override fun populate(dependencyInjector: DependencyInjector) {
+        with(dependencyInjector) {
+            NavigationGraphStore::class.getDependency()?.addNavigationGraph(FeatureBNavigationGraph())
+        }
     }
 }

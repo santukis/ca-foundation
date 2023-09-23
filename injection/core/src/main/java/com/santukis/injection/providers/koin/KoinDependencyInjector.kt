@@ -6,6 +6,8 @@ import com.santukis.injection.core.DependencyInjector
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.java.KoinJavaComponent
+import kotlin.reflect.KClass
 
 internal class KoinDependencyInjector : DependencyInjector {
 
@@ -13,15 +15,18 @@ internal class KoinDependencyInjector : DependencyInjector {
         context: Context,
         graph: Graph
     ) {
-        (graph as? KoinDIGraph)?.let {
+        (graph as? KoinDIGraph)?.let { diGraph ->
             startKoin {
                 androidContext(context)
-                modules(getModules(graph.getLibraries()))
+                modules(getModules(diGraph.getLibraries()))
             }
 
-            graph.getLibraries().forEach { it.populate() }
+            diGraph.getLibraries().forEach { it.populate(this) }
         } ?: throw ExceptionInInitializerError("Graph is not a subclass of KoinDIGraph")
     }
+
+    override fun <T : Any> KClass<T>.getDependency(): T? =
+        KoinJavaComponent.getKoin().getOrNull(this)
 
     private fun getModules(diLibraries: List<KoinDILibrary>): List<Module> {
         val diModules = diLibraries.flatMap { it.getModules() }

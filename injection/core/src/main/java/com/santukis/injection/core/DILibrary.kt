@@ -4,5 +4,7 @@ interface DILibrary<Module : DIModule<*>> {
 
     fun getModules(): List<Module>
 
-    fun populate() { }
+    fun populate(dependencyInjector: DependencyInjector) {
+        // no-op
+    }
 }

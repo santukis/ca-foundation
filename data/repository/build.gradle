@@ -1,0 +1,1 @@
+apply from: "$rootDir/gradle/configuration/build/kotlin_library_module.gradle"

@@ -2,7 +2,7 @@ apply plugin: "kotlin-parcelize"
 apply from: "$rootDir/gradle/configuration/detekt/detekt.gradle"
 
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24

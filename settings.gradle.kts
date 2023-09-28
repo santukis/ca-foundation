@@ -27,12 +27,18 @@ include(":sample:ui:featureB")
 include(":sample:ui:featureC")
 include(":sample:ui:featureD")
 
+include(":injection:core")
+
 include(":domain")
 
-include(":injection:core")
+include(":data:repository")
+include(":data:datasource:remote")
+include(":data:datasource:local")
 
 include(":ui:navigation")
 include(":ui:theme")
 include(":ui:components")
+
+include(":testing:remote-test")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

@@ -22,6 +22,7 @@ lifecycle = "2.6.2"
 moshi = "1.13.0"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
+room = "2.5.2"
 
 [libraries]
 
@@ -29,6 +30,10 @@ androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "a
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "core" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 
@@ -75,6 +80,7 @@ ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidTest" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "espresso" }
 junit = { module = "junit:junit", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit5" }
@@ -138,6 +144,12 @@ ktor = [
     "ktor-json",
     "ktor-logging",
     "ktor-okhttp"
+]
+
+room = [
+    "androidx-room-ktx",
+    "androidx-room-compiler",
+    "androidx-room-runtime"
 ]
 
 androidTest = [

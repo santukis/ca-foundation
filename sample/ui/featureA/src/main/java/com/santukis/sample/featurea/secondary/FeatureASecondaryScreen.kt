@@ -4,13 +4,36 @@ import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.Screen
 import com.santukis.ca.components.scaffold.ScreenArguments
+import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
+import com.santukis.sample.featurea.secondary.states.rememberFeatureASecondaryScreenUiState
 import com.santukis.sample.featurea.secondary.views.FeatureASecondaryScreenContent
+import com.santukis.sample.featurea.secondary.views.FeatureASecondaryScreenTopBar
 
 class FeatureASecondaryScreen : Screen<
     FeatureASecondaryState,
     FeatureASecondaryAction,
     FeatureASecondaryNavigationAction<*>
     >() {
+
+    private lateinit var uiState: FeatureASecondaryScreenUiState
+
+    @Composable
+    override fun UiState() {
+        uiState = rememberFeatureASecondaryScreenUiState()
+    }
+
+    @Composable
+    override fun TopBar(
+        arguments: ScreenArguments,
+        state: FeatureASecondaryState,
+        onAction: (Action) -> Unit
+    ) {
+        FeatureASecondaryScreenTopBar(
+            screenState = state,
+            uiState = uiState,
+            onAction = onAction
+        )
+    }
 
     @Composable
     override fun Content(
@@ -19,7 +42,8 @@ class FeatureASecondaryScreen : Screen<
         onAction: (Action) -> Unit
     ) {
         FeatureASecondaryScreenContent(
-            state = state,
+            screenState = state,
+            uiState = uiState,
             onAction = onAction
         )
     }

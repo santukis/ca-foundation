@@ -18,6 +18,11 @@ abstract class Screen<
     > {
 
     @Composable
+    protected open fun UiState() {
+        // no-op
+    }
+
+    @Composable
     protected abstract fun Content(
         arguments: ScreenArguments,
         state: S,
@@ -25,7 +30,7 @@ abstract class Screen<
     )
 
     @Composable
-    protected fun TopBar(
+    protected open fun TopBar(
         arguments: ScreenArguments,
         state: S,
         onAction: (Action) -> Unit
@@ -34,7 +39,7 @@ abstract class Screen<
     }
 
     @Composable
-    protected fun BottomBar(
+    protected open fun BottomBar(
         arguments: ScreenArguments,
         state: S,
         onAction: (Action) -> Unit
@@ -59,6 +64,8 @@ abstract class Screen<
                 }
             }
         }
+
+        UiState()
 
         Scaffold(
             modifier = modifier,

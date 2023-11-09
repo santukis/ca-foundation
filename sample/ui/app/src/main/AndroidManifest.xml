@@ -14,7 +14,9 @@
         android:theme="@style/Theme.Scaffold"
         tools:targetApi="31" >
 
-        <activity android:name=".landing.AppLandingActivity">
+        <activity
+            android:name=".landing.AppLandingActivity"
+            android:screenOrientation="fullUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

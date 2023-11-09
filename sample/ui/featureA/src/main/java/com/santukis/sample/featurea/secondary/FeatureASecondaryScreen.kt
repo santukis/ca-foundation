@@ -1,6 +1,7 @@
 package com.santukis.sample.featurea.secondary
 
 import androidx.compose.runtime.Composable
+import androidx.window.core.layout.WindowSizeClass
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.Screen
 import com.santukis.ca.components.scaffold.ScreenArguments
@@ -18,8 +19,10 @@ class FeatureASecondaryScreen : Screen<
     private lateinit var uiState: FeatureASecondaryScreenUiState
 
     @Composable
-    override fun UiState() {
-        uiState = rememberFeatureASecondaryScreenUiState()
+    override fun UiState(windowSizeClass: WindowSizeClass) {
+        uiState = rememberFeatureASecondaryScreenUiState(
+            windowSizeClass = windowSizeClass
+        )
     }
 
     @Composable
@@ -28,11 +31,13 @@ class FeatureASecondaryScreen : Screen<
         state: FeatureASecondaryState,
         onAction: (Action) -> Unit
     ) {
-        FeatureASecondaryScreenTopBar(
-            screenState = state,
-            uiState = uiState,
-            onAction = onAction
-        )
+        if (uiState.isWindowWidthCompat()) {
+            FeatureASecondaryScreenTopBar(
+                screenState = state,
+                uiState = uiState,
+                onAction = onAction
+            )
+        }
     }
 
     @Composable

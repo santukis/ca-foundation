@@ -1,5 +1,6 @@
 package com.santukis.ca.components.scaffold
 
+import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -8,6 +9,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.window.core.layout.WindowSizeClass
+import androidx.window.layout.WindowMetricsCalculator
 import org.koin.compose.koinInject
 import org.koin.core.component.getScopeName
 
@@ -18,7 +22,7 @@ abstract class Screen<
     > {
 
     @Composable
-    protected open fun UiState() {
+    protected open fun UiState(windowSizeClass: WindowSizeClass) {
         // no-op
     }
 
@@ -65,7 +69,7 @@ abstract class Screen<
             }
         }
 
-        UiState()
+        UiState(computeWindowSizeClass(LocalContext.current))
 
         Scaffold(
             modifier = modifier,
@@ -95,5 +99,15 @@ abstract class Screen<
                 )
             }
         }
+    }
+
+    private fun computeWindowSizeClass(context: Context): WindowSizeClass {
+        val metrics = WindowMetricsCalculator
+            .getOrCreate()
+            .computeCurrentWindowMetrics(context)
+        val width = metrics.bounds.width()
+        val height = metrics.bounds.height()
+        val density = context.resources.displayMetrics.density
+        return WindowSizeClass.compute(width / density, height / density)
     }
 }

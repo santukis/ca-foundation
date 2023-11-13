@@ -39,6 +39,4 @@ include(":ui:navigation")
 include(":ui:theme")
 include(":ui:components")
 
-include(":testing:remote-test")
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

@@ -4,7 +4,7 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-apply(from = "$rootDir/gradle/configuration/build/android_library_module.gradle")
+apply(from = "$rootDir/gradle/configuration/build/android_module.gradle")
 
 android {
     namespace = "com.santukis.ca.data.datasource.local"

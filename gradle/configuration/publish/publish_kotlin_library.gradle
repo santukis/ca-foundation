@@ -6,7 +6,7 @@ publishing {
             groupId = libGroup
             artifactId = libArtifactId
             version = libVersion
-            artifact("$buildDir/libs/${libArtifactId}.jar")
+            artifact("$buildDir/libs/${project.name}.jar")
             pom.withXml {
                 def node = asNode().appendNode("dependencies")
                 DependencySet dependencies = configurations.implementation.getDependencies()

@@ -1,9 +1,11 @@
 package com.santukis.navigation
 
+import androidx.compose.runtime.Stable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.activity
 import androidx.navigation.compose.composable
 
+@Stable
 interface NavigationGraph {
 
     fun NavGraphBuilder.buildGraph(router: Router)
@@ -11,6 +13,7 @@ interface NavigationGraph {
     fun getStartDestination(): String
 }
 
+@Stable
 fun NavGraphBuilder.navigate(
     router: Router,
     destination: ScreenDestination
@@ -27,6 +30,7 @@ fun NavGraphBuilder.navigate(
     }
 }
 
+@Stable
 fun NavGraphBuilder.navigateToActivity(
     destination: ActivityDestination
 ) {

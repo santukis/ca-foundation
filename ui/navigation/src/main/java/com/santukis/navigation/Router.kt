@@ -2,6 +2,7 @@ package com.santukis.navigation
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.compose.DialogNavigator
 import org.koin.ext.getFullName
 
+@Stable
 interface Router {
 
     fun getNavController(): NavHostController

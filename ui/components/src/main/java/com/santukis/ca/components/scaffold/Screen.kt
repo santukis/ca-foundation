@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ExperimentalComposeApi
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -15,6 +17,7 @@ import androidx.window.layout.WindowMetricsCalculator
 import org.koin.compose.koinInject
 import org.koin.core.component.getScopeName
 
+@Stable
 abstract class Screen<
     S : ScreenState,
     SA : ScreenAction,

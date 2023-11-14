@@ -1,7 +1,9 @@
 package com.santukis.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 
+@Stable
 interface NavigationArguments
 
 interface DestinationArguments : NavigationArguments {

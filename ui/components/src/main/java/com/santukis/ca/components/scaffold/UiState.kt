@@ -1,9 +1,11 @@
 package com.santukis.ca.components.scaffold
 
+import androidx.compose.runtime.Stable
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 
+@Stable
 abstract class UiState {
     abstract val windowSizeClass: WindowSizeClass
 

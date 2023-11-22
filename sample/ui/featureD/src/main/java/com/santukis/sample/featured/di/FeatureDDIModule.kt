@@ -20,7 +20,7 @@ class FeatureDDIModule : KoinDIModule() {
             factory<StateHolder<FeatureDLandingState>>(TypeQualifier(FeatureDLandingScreen::class)) {
                 get<FeatureDLandingViewModel>()
             }
-            factory<ActionHandler<FeatureDLandingAction>>(TypeQualifier(FeatureDLandingScreen::class)) {
+            factory<ActionHandler>(TypeQualifier(FeatureDLandingScreen::class)) {
                 get<FeatureDLandingViewModel>()
             }
         }

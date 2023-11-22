@@ -1,26 +1,18 @@
 package com.santukis.santukis.featureb.secondary
 
 import androidx.compose.runtime.Composable
-import com.santukis.ca.components.scaffold.Action
+import androidx.compose.runtime.remember
+import androidx.window.core.layout.WindowSizeClass
 import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.ScreenArguments
-import com.santukis.santukis.featureb.secondary.views.FeatureBSecondaryScreenContent
+import com.santukis.ca.components.scaffold.ScreenLayout
 
-class FeatureBSecondaryScreen : Screen<
-    FeatureBSecondaryState,
-    FeatureBSecondaryAction,
-    FeatureBSecondaryNavigationAction<*>
-    >() {
+class FeatureBSecondaryScreen : Screen<FeatureBSecondaryState>() {
 
     @Composable
-    override fun Content(
-        arguments: ScreenArguments,
-        state: FeatureBSecondaryState,
-        onAction: (Action) -> Unit
-    ) {
-        FeatureBSecondaryScreenContent(
-            state = state,
-            onAction = onAction
-        )
-    }
+    override fun rememberScreenLayout(
+        windowSizeClass: WindowSizeClass
+    ): ScreenLayout<FeatureBSecondaryState> =
+        remember {
+            FeatureBSecondaryScreenLayout()
+        }
 }

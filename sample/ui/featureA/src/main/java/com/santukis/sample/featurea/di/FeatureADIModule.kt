@@ -24,7 +24,7 @@ class FeatureADIModule : KoinDIModule() {
             factory<StateHolder<FeatureALandingState>>(TypeQualifier(FeatureALandingScreen::class)) {
                 get<FeatureALandingViewModel>()
             }
-            factory<ActionHandler<FeatureALandingAction>>(TypeQualifier(FeatureALandingScreen::class)) {
+            factory<ActionHandler>(TypeQualifier(FeatureALandingScreen::class)) {
                 get<FeatureALandingViewModel>()
             }
 
@@ -32,7 +32,7 @@ class FeatureADIModule : KoinDIModule() {
             factory<StateHolder<FeatureASecondaryState>>(TypeQualifier(FeatureASecondaryScreen::class)) {
                 get<FeatureASecondaryViewModel>()
             }
-            factory<ActionHandler<FeatureASecondaryAction>>(TypeQualifier(FeatureASecondaryScreen::class)) {
+            factory<ActionHandler>(TypeQualifier(FeatureASecondaryScreen::class)) {
                 get<FeatureASecondaryViewModel>()
             }
         }

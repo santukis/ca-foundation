@@ -3,7 +3,7 @@ package com.santukis.ca.components.scaffold
 import androidx.compose.runtime.Stable
 
 @Stable
-interface ActionHandler<Action : ScreenAction> {
+interface ActionHandler {
 
-    fun handle(action: Action)
+    fun handle(action: ScreenAction)
 }

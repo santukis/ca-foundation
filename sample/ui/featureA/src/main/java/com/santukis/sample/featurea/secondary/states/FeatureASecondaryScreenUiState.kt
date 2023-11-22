@@ -13,20 +13,17 @@ import com.santukis.ca.components.scaffold.states.rememberBottomSheetState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberFeatureASecondaryScreenUiState(
-    windowSizeClass: WindowSizeClass,
     lazyListState: LazyListState = rememberLazyListState(),
     bottomSheetState: BottomSheetState = rememberBottomSheetState()
 ): FeatureASecondaryScreenUiState =
     remember {
         FeatureASecondaryScreenUiState(
             lazyListState = lazyListState,
-            bottomSheetState = bottomSheetState,
-            windowSizeClass = windowSizeClass
+            bottomSheetState = bottomSheetState
         )
     }
 
 class FeatureASecondaryScreenUiState(
     val lazyListState: LazyListState,
-    val bottomSheetState: BottomSheetState,
-    override val windowSizeClass: WindowSizeClass,
+    val bottomSheetState: BottomSheetState
 ) : UiState()

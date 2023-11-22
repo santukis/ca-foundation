@@ -1,23 +1,18 @@
 package com.santukis.scaffold.landing
 
 import androidx.compose.runtime.Composable
-import com.santukis.ca.components.scaffold.Action
+import androidx.compose.runtime.remember
+import androidx.window.core.layout.WindowSizeClass
 import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.ScreenArguments
-import com.santukis.scaffold.landing.views.AppLandingScreenContent
+import com.santukis.ca.components.scaffold.ScreenLayout
 
-class AppLandingScreen : Screen<
-    AppLandingState,
-    AppLandingAction,
-    AppLandingNavigationAction
-    >() {
+class AppLandingScreen : Screen<AppLandingState>() {
 
     @Composable
-    override fun Content(
-        arguments: ScreenArguments,
-        state: AppLandingState,
-        onAction: (Action) -> Unit
-    ) {
-        AppLandingScreenContent()
-    }
+    override fun rememberScreenLayout(
+        windowSizeClass: WindowSizeClass
+    ): ScreenLayout<AppLandingState> =
+        remember {
+            AppLandingScreenLayout()
+        }
 }

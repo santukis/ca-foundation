@@ -24,7 +24,7 @@ class FeatureBDIModule : KoinDIModule() {
             factory<StateHolder<FeatureBLandingState>>(TypeQualifier(FeatureBLandingScreen::class)) {
                 get<FeatureBLandingViewModel>()
             }
-            factory<ActionHandler<FeatureBLandingAction>>(TypeQualifier(FeatureBLandingScreen::class)) {
+            factory<ActionHandler>(TypeQualifier(FeatureBLandingScreen::class)) {
                 get<FeatureBLandingViewModel>()
             }
 
@@ -32,7 +32,7 @@ class FeatureBDIModule : KoinDIModule() {
             factory<StateHolder<FeatureBSecondaryState>>(TypeQualifier(FeatureBSecondaryScreen::class)) {
                 get<FeatureBSecondaryViewModel>()
             }
-            factory<ActionHandler<FeatureBSecondaryAction>>(TypeQualifier(FeatureBSecondaryScreen::class)) {
+            factory<ActionHandler>(TypeQualifier(FeatureBSecondaryScreen::class)) {
                 get<FeatureBSecondaryViewModel>()
             }
         }

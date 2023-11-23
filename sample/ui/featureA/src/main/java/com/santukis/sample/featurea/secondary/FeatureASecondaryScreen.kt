@@ -2,19 +2,18 @@ package com.santukis.sample.featurea.secondary
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.window.core.layout.WindowSizeClass
-import androidx.window.core.layout.WindowWidthSizeClass.Companion.COMPACT
 import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.ScreenLayout
+import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
 
 class FeatureASecondaryScreen : Screen<FeatureASecondaryState>() {
 
     @Composable
     override fun rememberScreenLayout(
-        windowSizeClass: WindowSizeClass
+        screenConfiguration: ScreenConfigurationState
     ): ScreenLayout<FeatureASecondaryState> =
-        remember(windowSizeClass) {
-            if (windowSizeClass.windowWidthSizeClass == COMPACT) {
+        remember(screenConfiguration) {
+            if (screenConfiguration.isPortrait()) {
                 FeatureASecondaryPortraitScreenLayout()
             } else {
                 FeatureASecondaryLandscapeScreenLayout()

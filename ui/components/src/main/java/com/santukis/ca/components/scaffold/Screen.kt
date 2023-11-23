@@ -1,15 +1,14 @@
 package com.santukis.ca.components.scaffold
 
-import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.window.core.layout.WindowSizeClass
-import androidx.window.layout.WindowMetricsCalculator
+import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
+import com.santukis.ca.components.scaffold.states.rememberScreenConfigurationState
 import org.koin.compose.koinInject
 import org.koin.core.component.getScopeName
 
@@ -17,7 +16,9 @@ import org.koin.core.component.getScopeName
 abstract class Screen<S : ScreenState> {
 
     @Composable
-    abstract fun rememberScreenLayout(windowSizeClass: WindowSizeClass): ScreenLayout<S>
+    abstract fun rememberScreenLayout(
+        screenConfiguration: ScreenConfigurationState
+    ): ScreenLayout<S>
 
     @Composable
     fun Layout(
@@ -36,8 +37,9 @@ abstract class Screen<S : ScreenState> {
                 }
             }
         }
+        val screenConfiguration = rememberScreenConfigurationState()
         val screenLayout: ScreenLayout<S> =
-            rememberScreenLayout(computeWindowSizeClass(LocalContext.current))
+            rememberScreenLayout(screenConfiguration)
 
         screenLayout
             .Layout(
@@ -46,15 +48,5 @@ abstract class Screen<S : ScreenState> {
                 state = state,
                 onAction = onActions
             )
-    }
-
-    private fun computeWindowSizeClass(context: Context): WindowSizeClass {
-        val metrics = WindowMetricsCalculator
-            .getOrCreate()
-            .computeCurrentWindowMetrics(context)
-        val width = metrics.bounds.width()
-        val height = metrics.bounds.height()
-        val density = context.resources.displayMetrics.density
-        return WindowSizeClass.compute(width / density, height / density)
     }
 }

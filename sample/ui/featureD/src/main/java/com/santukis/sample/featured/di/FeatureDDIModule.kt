@@ -3,7 +3,6 @@ package com.santukis.sample.featured.di
 import com.santukis.ca.components.scaffold.ActionHandler
 import com.santukis.ca.components.scaffold.StateHolder
 import com.santukis.injection.providers.koin.KoinDIModule
-import com.santukis.sample.featured.landing.FeatureDLandingAction
 import com.santukis.sample.featured.landing.FeatureDLandingScreen
 import com.santukis.sample.featured.landing.FeatureDLandingState
 import com.santukis.sample.featured.landing.FeatureDLandingViewModel

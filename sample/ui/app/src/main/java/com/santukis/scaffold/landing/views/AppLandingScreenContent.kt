@@ -8,16 +8,19 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.santukis.navigation.NavigationGraph
 import com.santukis.navigation.Router
+import com.santukis.navigation.rememberRouter
 import org.koin.compose.koinInject
 
 @Composable
 fun AppLandingScreenContent(
     modifier: Modifier = Modifier,
-    router: Router = koinInject(),
     navigationGraph: NavigationGraph = koinInject()
 ) {
+    val router: Router = rememberRouter(argumentsMapper = koinInject())
+
     Surface(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize(),
         color = MaterialTheme.colors.background
     ) {
         NavHost(

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.santukis.navigation.Router
+import com.santukis.navigation.rememberRouter
 import com.santukis.sample.featured.landing.FeatureDLandingNavigationAction.NavigateToFeatureAScreen
 import com.santukis.sample.featured.landing.views.FeatureDLandingInputArguments
 import com.santukis.theme.ScaffoldTheme
@@ -20,7 +21,7 @@ class FeatureDLandingActivity : ComponentActivity() {
 
         setContent {
             ScaffoldTheme {
-                val router: Router = koinInject()
+                val router: Router = rememberRouter(argumentsMapper = koinInject())
 
                 FeatureDLandingScreen().Layout(
                     arguments = FeatureDLandingInputArguments(

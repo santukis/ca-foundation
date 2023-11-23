@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.window.core.layout.WindowSizeClass
 import com.santukis.ca.components.scaffold.UiState
 import com.santukis.ca.components.scaffold.states.BottomSheetState
 import com.santukis.ca.components.scaffold.states.rememberBottomSheetState

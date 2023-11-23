@@ -1,9 +1,10 @@
 package com.santukis.sample.featurea.secondary
 
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScaffoldScreenLayout
 import com.santukis.ca.components.scaffold.ScreenArguments
+import com.santukis.ca.components.scaffold.screenlayouts.ScaffoldScreenLayout
 import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
 import com.santukis.sample.featurea.secondary.states.rememberFeatureASecondaryScreenUiState
 import com.santukis.sample.featurea.secondary.views.FeatureASecondaryScreenContent
@@ -35,7 +36,7 @@ class FeatureASecondaryPortraitScreenLayout : ScaffoldScreenLayout<FeatureASecon
     }
 
     @Composable
-    override fun Content(
+    override fun BoxScope.Content(
         arguments: ScreenArguments,
         state: FeatureASecondaryState,
         onAction: (Action) -> Unit

@@ -1,11 +1,15 @@
 package com.santukis.injection.providers.koin
 
 import android.content.Context
+import androidx.compose.runtime.Composable
 import com.santukis.injection.core.DIGraph
 import com.santukis.injection.core.DependencyInjector
 import org.koin.android.ext.koin.androidContext
+import org.koin.compose.getKoin
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.core.qualifier.TypeQualifier
+import org.koin.ext.getFullName
 import org.koin.java.KoinJavaComponent
 import kotlin.reflect.KClass
 
@@ -27,6 +31,17 @@ internal class KoinDependencyInjector : DependencyInjector {
 
     override fun <T : Any> KClass<T>.getDependency(): T? =
         KoinJavaComponent.getKoin().getOrNull(this)
+
+    @Composable
+    override fun <S : Any, T : Any> S.injectComposable(to: KClass<T>): T =
+        getKoin()
+            .getOrCreateScope(
+                scopeId = this::class.getFullName(),
+                qualifier = TypeQualifier(this::class),
+                source = this
+            ).get(
+                clazz = to
+            )
 
     private fun getModules(diLibraries: List<KoinDILibrary>): List<Module> {
         val diModules = diLibraries.flatMap { it.getModules() }

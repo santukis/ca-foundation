@@ -14,7 +14,6 @@ import com.santukis.scaffold.landing.AppLandingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
-import org.koin.core.qualifier.TypeQualifier
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -26,12 +25,15 @@ class AppDIModule : KoinDIModule() {
             single { NavigationGraphStoreProvider.provide() }
             single<NavigationGraph> { get<NavigationGraphStore>() }
 
-            viewModelOf(::AppLandingViewModel)
-            factory<StateHolder<AppLandingState>>(TypeQualifier(AppLandingScreen::class)) {
-                get<AppLandingViewModel>()
-            }
-            factory<ActionHandler>(TypeQualifier(AppLandingScreen::class)) {
-                get<AppLandingViewModel>()
+            scope<AppLandingScreen> {
+                viewModelOf(::AppLandingViewModel)
+                scoped<StateHolder<AppLandingState>> {
+                    get<AppLandingViewModel>()
+                }
+
+                scoped<ActionHandler> {
+                    get<AppLandingViewModel>()
+                }
             }
         }
 }

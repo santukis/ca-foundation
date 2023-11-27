@@ -9,8 +9,7 @@ import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
 import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
 import com.santukis.ca.components.scaffold.states.rememberScreenConfigurationState
-import org.koin.compose.koinInject
-import org.koin.core.component.getScopeName
+import com.santukis.injection.core.DependencyInjectorProvider
 
 @Stable
 abstract class Screen<S : ScreenState> {
@@ -24,8 +23,8 @@ abstract class Screen<S : ScreenState> {
     fun Layout(
         modifier: Modifier = Modifier,
         arguments: ScreenArguments = NoArguments(),
-        stateHolder: StateHolder<S> = koinInject(getScopeName()),
-        actionHandler: ActionHandler = koinInject(getScopeName()),
+        stateHolder: StateHolder<S> = inject(),
+        actionHandler: ActionHandler = inject(),
         navigationHandler: (NavigationAction) -> Unit = {}
     ) {
         val state by stateHolder.getState().collectAsState()
@@ -49,4 +48,12 @@ abstract class Screen<S : ScreenState> {
                 onAction = onActions
             )
     }
+
+    @Composable
+    protected inline fun <reified T : Any> inject(): T =
+        with(DependencyInjectorProvider.provide()) {
+            this@Screen.injectComposable(
+                to = T::class
+            )
+        }
 }

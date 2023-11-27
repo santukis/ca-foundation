@@ -8,19 +8,21 @@ import com.santukis.sample.featurec.landing.FeatureCLandingState
 import com.santukis.sample.featurec.landing.FeatureCLandingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
-import org.koin.core.qualifier.TypeQualifier
 import org.koin.dsl.module
 
 class FeatureCDIModule : KoinDIModule() {
 
     override fun getModule(): Module =
         module {
-            viewModelOf(::FeatureCLandingViewModel)
-            factory<StateHolder<FeatureCLandingState>>(TypeQualifier(FeatureCLandingScreen::class)) {
-                get<FeatureCLandingViewModel>()
-            }
-            factory<ActionHandler>(TypeQualifier(FeatureCLandingScreen::class)) {
-                get<FeatureCLandingViewModel>()
+            scope<FeatureCLandingScreen> {
+                viewModelOf(::FeatureCLandingViewModel)
+                scoped<StateHolder<FeatureCLandingState>> {
+                    get<FeatureCLandingViewModel>()
+                }
+
+                scoped<ActionHandler> {
+                    get<FeatureCLandingViewModel>()
+                }
             }
         }
 }

@@ -33,11 +33,11 @@ internal class KoinDependencyInjector : DependencyInjector {
         KoinJavaComponent.getKoin().getOrNull(this)
 
     @Composable
-    override fun <S : Any, T : Any> S.injectComposable(to: KClass<T>): T =
+    override fun <S : Any, T : Any> injectComposable(from: KClass<S>, to: KClass<T>): T =
         getKoin()
             .getOrCreateScope(
-                scopeId = this::class.getFullName(),
-                qualifier = TypeQualifier(this::class),
+                scopeId = from.getFullName(),
+                qualifier = TypeQualifier(from),
                 source = this
             ).get(
                 clazz = to

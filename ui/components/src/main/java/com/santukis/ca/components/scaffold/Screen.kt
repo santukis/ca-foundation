@@ -51,9 +51,10 @@ abstract class Screen<S : ScreenState> {
 
     @Composable
     protected inline fun <reified T : Any> inject(): T =
-        with(DependencyInjectorProvider.provide()) {
-            this@Screen.injectComposable(
+        DependencyInjectorProvider
+            .provide()
+            .injectComposable(
+                from = this@Screen::class,
                 to = T::class
             )
-        }
 }

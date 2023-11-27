@@ -11,5 +11,5 @@ interface DependencyInjector {
     fun <T : Any> KClass<T>.getDependency(): T?
 
     @Composable
-    fun <S : Any, T : Any> S.injectComposable(to: KClass<T>): T
+    fun <S : Any, T : Any> injectComposable(from: KClass<S>, to: KClass<T>): T
 }

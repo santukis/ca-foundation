@@ -11,27 +11,32 @@ import com.santukis.santukis.featureb.secondary.FeatureBSecondaryState
 import com.santukis.santukis.featureb.secondary.FeatureBSecondaryViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
-import org.koin.core.qualifier.TypeQualifier
 import org.koin.dsl.module
 
 class FeatureBDIModule : KoinDIModule() {
 
     override fun getModule(): Module =
         module {
-            viewModelOf(::FeatureBLandingViewModel)
-            factory<StateHolder<FeatureBLandingState>>(TypeQualifier(FeatureBLandingScreen::class)) {
-                get<FeatureBLandingViewModel>()
-            }
-            factory<ActionHandler>(TypeQualifier(FeatureBLandingScreen::class)) {
-                get<FeatureBLandingViewModel>()
+            scope<FeatureBLandingScreen> {
+                viewModelOf(::FeatureBLandingViewModel)
+                scoped<StateHolder<FeatureBLandingState>> {
+                    get<FeatureBLandingViewModel>()
+                }
+
+                scoped<ActionHandler> {
+                    get<FeatureBLandingViewModel>()
+                }
             }
 
-            viewModelOf(::FeatureBSecondaryViewModel)
-            factory<StateHolder<FeatureBSecondaryState>>(TypeQualifier(FeatureBSecondaryScreen::class)) {
-                get<FeatureBSecondaryViewModel>()
-            }
-            factory<ActionHandler>(TypeQualifier(FeatureBSecondaryScreen::class)) {
-                get<FeatureBSecondaryViewModel>()
+            scope<FeatureBSecondaryScreen> {
+                viewModelOf(::FeatureBSecondaryViewModel)
+                scoped<StateHolder<FeatureBSecondaryState>> {
+                    get<FeatureBSecondaryViewModel>()
+                }
+
+                scoped<ActionHandler> {
+                    get<FeatureBSecondaryViewModel>()
+                }
             }
         }
 }

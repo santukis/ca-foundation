@@ -8,19 +8,20 @@ import com.santukis.sample.featured.landing.FeatureDLandingState
 import com.santukis.sample.featured.landing.FeatureDLandingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
-import org.koin.core.qualifier.TypeQualifier
 import org.koin.dsl.module
 
 class FeatureDDIModule : KoinDIModule() {
 
     override fun getModule(): Module =
         module {
-            viewModelOf(::FeatureDLandingViewModel)
-            factory<StateHolder<FeatureDLandingState>>(TypeQualifier(FeatureDLandingScreen::class)) {
-                get<FeatureDLandingViewModel>()
-            }
-            factory<ActionHandler>(TypeQualifier(FeatureDLandingScreen::class)) {
-                get<FeatureDLandingViewModel>()
+            scope<FeatureDLandingScreen> {
+                viewModelOf(::FeatureDLandingViewModel)
+                scoped<StateHolder<FeatureDLandingState>> {
+                    get<FeatureDLandingViewModel>()
+                }
+                scoped<ActionHandler> {
+                    get<FeatureDLandingViewModel>()
+                }
             }
         }
 }

@@ -2,8 +2,6 @@ package com.santukis.ca.components.scaffold
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
@@ -27,7 +25,7 @@ abstract class Screen<S : ScreenState> {
         actionHandler: ActionHandler = inject(),
         navigationHandler: (NavigationAction) -> Unit = {}
     ) {
-        val state by stateHolder.getState().collectAsState()
+        val state = remember { stateHolder.getState() }
         val onActions: (Action) -> Unit = remember {
             { action ->
                 when (action) {
@@ -37,14 +35,13 @@ abstract class Screen<S : ScreenState> {
             }
         }
         val screenConfiguration = rememberScreenConfigurationState()
-        val screenLayout: ScreenLayout<S> =
-            rememberScreenLayout(screenConfiguration)
+        val screenLayout: ScreenLayout<S> = rememberScreenLayout(screenConfiguration)
 
         screenLayout
             .Layout(
                 modifier = modifier,
                 arguments = arguments,
-                state = state,
+                state = state.value,
                 onAction = onActions
             )
     }

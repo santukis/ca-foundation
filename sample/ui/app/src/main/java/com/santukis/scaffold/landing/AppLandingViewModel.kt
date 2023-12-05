@@ -1,21 +1,21 @@
 package com.santukis.scaffold.landing
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.santukis.ca.components.scaffold.ActionHandler
 import com.santukis.ca.components.scaffold.ScreenAction
 import com.santukis.ca.components.scaffold.StateHolder
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class AppLandingViewModel :
     ViewModel(),
     StateHolder<AppLandingState>,
     ActionHandler {
 
-    private var state: MutableStateFlow<AppLandingState> = MutableStateFlow(AppLandingState())
+    private var state: MutableState<AppLandingState> = mutableStateOf(AppLandingState())
 
-    override fun getState(): StateFlow<AppLandingState> = state.asStateFlow()
+    override fun getState(): State<AppLandingState> = state
 
     override fun handle(action: ScreenAction) {
         // no-op

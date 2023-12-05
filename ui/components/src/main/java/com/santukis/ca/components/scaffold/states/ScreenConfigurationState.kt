@@ -1,29 +1,36 @@
 package com.santukis.ca.components.scaffold.states
 
+import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalConfiguration
 
 @Composable
 fun rememberScreenConfigurationState(
-    windowSizeClassState: WindowSizeClassState = rememberWindowSizeClassState()
-): ScreenConfigurationState =
-    remember(
+    windowSizeClassState: WindowSizeClassState = rememberWindowSizeClassState(),
+): ScreenConfigurationState {
+    val configuration = LocalConfiguration.current
+
+    return remember(
         windowSizeClassState
     ) {
         ScreenConfigurationState(
-            windowSizeClassState = windowSizeClassState
+            windowSizeClassState = windowSizeClassState,
+            configuration = configuration
         )
     }
+}
 
 @Immutable
 class ScreenConfigurationState(
-    val windowSizeClassState: WindowSizeClassState
+    val windowSizeClassState: WindowSizeClassState,
+    val configuration: Configuration
 ) {
 
     fun isPortrait(): Boolean =
-        windowSizeClassState.getHeightSize() > windowSizeClassState.getWidthSize()
+        configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
     fun isLandscape(): Boolean =
-        windowSizeClassState.getWidthSize() > windowSizeClassState.getHeightSize()
+        configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 }

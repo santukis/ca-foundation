@@ -1,10 +1,10 @@
 package com.santukis.ca.components.scaffold
 
 import androidx.compose.runtime.Stable
-import kotlinx.coroutines.flow.StateFlow
+import androidx.compose.runtime.State
 
 @Stable
-interface StateHolder<State : ScreenState> {
+interface StateHolder<S : ScreenState> {
 
-    fun getState(): StateFlow<State>
+    fun getState(): State<S>
 }

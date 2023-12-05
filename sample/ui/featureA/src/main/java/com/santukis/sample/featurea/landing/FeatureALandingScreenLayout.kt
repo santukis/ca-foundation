@@ -1,6 +1,8 @@
 package com.santukis.sample.featurea.landing
 
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,9 +24,9 @@ class FeatureALandingScreenLayout : ScaffoldScreenLayout<FeatureALandingState>()
             featureDResult = (arguments as? FeatureALandingInputArguments)?.anyParam.orEmpty(),
             state = state,
             onActions = onAction,
-            modifier = Modifier.align(
-                Alignment.Center
-            )
+            modifier = Modifier
+                .align(Alignment.Center)
+                .verticalScroll(rememberScrollState())
         )
     }
 }

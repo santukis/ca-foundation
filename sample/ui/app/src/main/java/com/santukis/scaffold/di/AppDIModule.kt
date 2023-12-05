@@ -9,12 +9,11 @@ import com.santukis.navigation.NavigationGraphStore
 import com.santukis.navigation.NavigationGraphStoreProvider
 import com.santukis.scaffold.AppArgumentsMapper
 import com.santukis.scaffold.landing.AppLandingScreen
-import com.santukis.scaffold.landing.AppLandingState
 import com.santukis.scaffold.landing.AppLandingViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
+import org.koin.dsl.binds
 import org.koin.dsl.module
 
 class AppDIModule : KoinDIModule() {
@@ -26,14 +25,10 @@ class AppDIModule : KoinDIModule() {
             single<NavigationGraph> { get<NavigationGraphStore>() }
 
             scope<AppLandingScreen> {
-                viewModelOf(::AppLandingViewModel)
-                scoped<StateHolder<AppLandingState>> {
-                    get<AppLandingViewModel>()
-                }
-
-                scoped<ActionHandler> {
-                    get<AppLandingViewModel>()
-                }
+                scoped { AppLandingViewModel() } binds arrayOf(
+                    ActionHandler::class,
+                    StateHolder::class
+                )
             }
         }
 }

@@ -1,6 +1,8 @@
 package com.santukis.sample.featurea.landing
 
 import com.santukis.ca.components.scaffold.ScreenAction
+import com.santukis.ca.components.scaffold.actions.CloseDrawer
+import com.santukis.ca.components.scaffold.actions.OpenDrawer
 
 sealed class FeatureALandingAction : ScreenAction {
 
@@ -10,4 +12,7 @@ sealed class FeatureALandingAction : ScreenAction {
     class UpdateField04(val value: List<String>) : FeatureALandingAction()
     class UpdateField05(val value: FeatureALandingState.LandingItem) : FeatureALandingAction()
     class UpdateField06(val value: FeatureALandingItem) : FeatureALandingAction()
+
+    object OpenNavigationDrawer : FeatureALandingAction(), OpenDrawer
+    object CloseNavigationDrawer : FeatureALandingAction(), CloseDrawer
 }

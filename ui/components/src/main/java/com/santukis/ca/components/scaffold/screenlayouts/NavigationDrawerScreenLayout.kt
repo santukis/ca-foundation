@@ -8,7 +8,8 @@ import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.ScreenArguments
 import com.santukis.ca.components.scaffold.ScreenState
-import com.santukis.ca.components.scaffold.actions.NavigationDrawerAction
+import com.santukis.ca.components.scaffold.actions.CloseDrawer
+import com.santukis.ca.components.scaffold.actions.OpenDrawer
 import com.santukis.ca.components.scaffold.states.NavigationDrawerState
 import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
 import com.santukis.ca.components.scaffold.states.rememberNavigationDrawerState
@@ -53,8 +54,8 @@ abstract class NavigationDrawerScreenLayout<S : ScreenState> : ScreenLayout<S>()
         val onActions: (Action) -> Unit = remember {
             { action ->
                 when (action) {
-                    is NavigationDrawerAction.OpenDrawer -> navigationDrawerState.openDrawer()
-                    is NavigationDrawerAction.CloseDrawer -> navigationDrawerState.closeDrawer()
+                    is OpenDrawer -> navigationDrawerState.openDrawer()
+                    is CloseDrawer -> navigationDrawerState.closeDrawer()
                 }
 
                 onAction(action)

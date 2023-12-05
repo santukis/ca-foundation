@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.ScreenArguments
-import com.santukis.ca.components.scaffold.actions.NavigationDrawerAction
+import com.santukis.sample.featurea.landing.FeatureALandingAction
 import com.santukis.sample.featurea.landing.FeatureALandingState
 
 @Suppress("UnusedParameter")
@@ -37,7 +37,7 @@ fun FeatureALandingTopBar(
             modifier = Modifier
                 .clickable {
                     onAction(
-                        NavigationDrawerAction.OpenDrawer()
+                        FeatureALandingAction.OpenNavigationDrawer
                     )
                 }
         )

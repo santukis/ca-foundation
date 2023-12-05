@@ -1,10 +1,10 @@
 package com.santukis.ca.components.scaffold.actions
 
+import androidx.compose.runtime.Stable
 import com.santukis.ca.components.scaffold.ScreenAction
 
-open class NavigationDrawerAction : ScreenAction {
+@Stable
+interface OpenDrawer : ScreenAction
 
-    open class OpenDrawer : NavigationDrawerAction()
-
-    open class CloseDrawer : NavigationDrawerAction()
-}
+@Stable
+interface CloseDrawer : ScreenAction

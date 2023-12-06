@@ -31,8 +31,7 @@ abstract class BoxScreenLayout<S : ScreenState> : ScreenLayout<S>() {
         )
 
         Box(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = modifier
         ) {
             Content(
                 arguments = arguments,

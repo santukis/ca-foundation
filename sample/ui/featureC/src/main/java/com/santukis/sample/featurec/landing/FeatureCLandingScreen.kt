@@ -1,18 +1,20 @@
 package com.santukis.sample.featurec.landing
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import com.santukis.ca.components.scaffold.Screen
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
-import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
+import com.santukis.ca.components.scaffold.states.ScaffoldState
+import com.santukis.ca.components.scaffold.states.rememberScaffoldState
 
-class FeatureCLandingScreen : Screen<FeatureCLandingState>() {
+class FeatureCLandingScreen : Screen<FeatureCLandingState, ScaffoldState>() {
+
+    override fun screenLayout(
+        state: FeatureCLandingState,
+        uiState: ScaffoldState
+    ): ScreenLayout<FeatureCLandingState, ScaffoldState> =
+        FeatureCLandingScreenLayout()
 
     @Composable
-    override fun rememberScreenLayout(
-        screenConfiguration: ScreenConfigurationState
-    ): ScreenLayout<FeatureCLandingState> =
-        remember {
-            FeatureCLandingScreenLayout()
-        }
+    override fun uiState(): ScaffoldState = rememberScaffoldState()
+
 }

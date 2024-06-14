@@ -43,10 +43,10 @@ fun FeatureASecondaryScreenContent(
         }
     }
 
-    if (uiState.bottomSheetState.isBottomSheetVisible()) {
+    if (uiState.bottomSheetState.isVisible()) {
         ModalBottomSheet(
             onDismissRequest = {
-                uiState.bottomSheetState.toggleBottomSheetVisibility()
+
             },
             sheetState = uiState.bottomSheetState.sheetState
         ) {

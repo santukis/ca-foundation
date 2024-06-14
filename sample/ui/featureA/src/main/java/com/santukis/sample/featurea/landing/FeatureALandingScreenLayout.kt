@@ -4,23 +4,26 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.ScreenArguments
 import com.santukis.ca.components.scaffold.screenlayouts.NavigationDrawerScreenLayout
-import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
-import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
+import com.santukis.ca.components.scaffold.states.NavigationDrawerState
+import com.santukis.sample.featurea.landing.views.FeatureALandingInputArguments
+import com.santukis.sample.featurea.landing.views.FeatureALandingScreenContent
 
-class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<FeatureALandingState>() {
+class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<
+        FeatureALandingState, FeatureALandingUiState>() {
 
     @Composable
     override fun DrawerContent(
+        modifier: Modifier,
         arguments: ScreenArguments,
         state: FeatureALandingState,
+        uiState: FeatureALandingUiState,
         onAction: (Action) -> Unit
     ) {
         Column(
@@ -35,12 +38,22 @@ class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<FeatureALanding
     }
 
     @Composable
-    override fun rememberContentLayout(
-        screenConfiguration: ScreenConfigurationState
-    ): ScreenLayout<FeatureALandingState> =
-        remember {
-            FeatureALandingContentScreenLayout()
-        }
+    override fun Content(
+        modifier: Modifier,
+        arguments: ScreenArguments,
+        state: FeatureALandingState,
+        uiState: FeatureALandingUiState,
+        onAction: (Action) -> Unit
+    ) {
+        FeatureALandingContentScreenLayout()
+            .Layout(
+                modifier = modifier,
+                arguments = arguments,
+                state = state,
+                uiState = uiState,
+                onAction = onAction
+            )
+    }
 
     private companion object {
         const val NavigationViewWidth = 0.4f

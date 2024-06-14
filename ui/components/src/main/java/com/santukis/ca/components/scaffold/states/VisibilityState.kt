@@ -1,59 +1,20 @@
 package com.santukis.ca.components.scaffold.states
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+interface VisibilityState {
 
-@Composable
-fun rememberVisibleState(
-    initialValue: VisibilityState.VisibleValue = VisibilityState.VisibleValue.Visible
-): VisibilityState =
-    rememberSaveable(saver = VisibilityState.Saver) {
-        VisibilityState(initialValue)
-    }
+    fun isVisible(): Boolean
 
-@Suppress("NotCloseable")
-@Stable
-class VisibilityState(
-    initialValue: VisibleValue
-) {
+    fun show(onShown: () -> Unit = {})
 
-    enum class VisibleValue {
-        Visible,
-        Invisible
-    }
+    fun hide(onHidden: () -> Unit = {})
 
-    private var currentValue: VisibleValue by mutableStateOf(initialValue)
-
-    val isVisible: Boolean
-        get() = currentValue == VisibleValue.Visible
-
-    val isInvisible: Boolean
-        get() = currentValue == VisibleValue.Invisible
-
-    fun show() {
-        currentValue = VisibleValue.Visible
-    }
-
-    fun hide() {
-        currentValue = VisibleValue.Invisible
-    }
-
-    fun toggle() {
+    fun toggle(
+        onShown: () -> Unit = {},
+        onHidden: () -> Unit = {}
+    ) {
         when {
-            isVisible -> hide()
-            else -> show()
+            isVisible() -> hide(onHidden)
+            else -> show(onShown)
         }
-    }
-
-    companion object {
-        val Saver: Saver<VisibilityState, VisibleValue> = Saver(
-            save = { it.currentValue },
-            restore = { VisibilityState(it) }
-        )
     }
 }

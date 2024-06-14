@@ -5,17 +5,18 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
-import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
-import com.santukis.ca.components.scaffold.states.rememberScreenConfigurationState
 import com.santukis.injection.core.DependencyInjectorProvider
 
 @Stable
-abstract class Screen<S : ScreenState> {
+abstract class Screen<S : ScreenState, US : UiState> {
+
+    protected abstract fun screenLayout(
+        state: S,
+        uiState: US
+    ): ScreenLayout<S, US>
 
     @Composable
-    abstract fun rememberScreenLayout(
-        screenConfiguration: ScreenConfigurationState
-    ): ScreenLayout<S>
+    protected abstract fun uiState(): US
 
     @Composable
     fun Layout(
@@ -26,6 +27,7 @@ abstract class Screen<S : ScreenState> {
         navigationHandler: (NavigationAction) -> Unit = {}
     ) {
         val state = remember { stateHolder.getState() }
+        val uiState = uiState()
         val onActions: (Action) -> Unit = remember {
             { action ->
                 when (action) {
@@ -34,14 +36,18 @@ abstract class Screen<S : ScreenState> {
                 }
             }
         }
-        val screenConfiguration = rememberScreenConfigurationState()
-        val screenLayout: ScreenLayout<S> = rememberScreenLayout(screenConfiguration)
+        val screenLayout = remember {
+            screenLayout(
+                state = state.value,
+                uiState = uiState
+            )
+        }
 
-        screenLayout
-            .Layout(
+        screenLayout.Layout(
                 modifier = modifier,
                 arguments = arguments,
                 state = state.value,
+                uiState = uiState,
                 onAction = onActions
             )
     }

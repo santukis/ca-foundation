@@ -8,6 +8,20 @@ import androidx.window.core.layout.WindowSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import androidx.window.layout.WindowMetricsCalculator
 
+interface WindowSizeClassState {
+
+    enum class Size {
+        COMPAT,
+        MEDIUM,
+        EXPANDED
+    }
+
+    fun getWidthSize(): Size
+
+    fun getHeightSize():  Size
+
+}
+
 @Composable
 fun rememberWindowSizeClassState(
     context: Context = LocalContext.current
@@ -18,32 +32,26 @@ fun rememberWindowSizeClassState(
     val width = metrics.bounds.width()
     val height = metrics.bounds.height()
     val density = context.resources.displayMetrics.density
-    return WindowSizeClassState(
+    return DefaultWindowSizeClassState(
         WindowSizeClass.compute(width / density, height / density)
     )
 }
 
-class WindowSizeClassState(
+internal class DefaultWindowSizeClassState(
     private val windowSizeClass: WindowSizeClass
-) {
+) : WindowSizeClassState {
 
-    enum class Size {
-        COMPAT,
-        MEDIUM,
-        EXPANDED
-    }
-
-    fun getWidthSize(): Size =
+    override fun getWidthSize(): WindowSizeClassState.Size =
         when (windowSizeClass.windowWidthSizeClass) {
-            WindowWidthSizeClass.COMPACT -> Size.COMPAT
-            WindowWidthSizeClass.MEDIUM -> Size.MEDIUM
-            else -> Size.EXPANDED
+            WindowWidthSizeClass.COMPACT -> WindowSizeClassState.Size.COMPAT
+            WindowWidthSizeClass.MEDIUM ->  WindowSizeClassState.Size.MEDIUM
+            else ->  WindowSizeClassState.Size.EXPANDED
         }
 
-    fun getHeightSize(): Size =
+    override fun getHeightSize():  WindowSizeClassState.Size =
         when (windowSizeClass.windowHeightSizeClass) {
-            WindowHeightSizeClass.COMPACT -> Size.COMPAT
-            WindowHeightSizeClass.MEDIUM -> Size.MEDIUM
-            else -> Size.EXPANDED
+            WindowHeightSizeClass.COMPACT ->  WindowSizeClassState.Size.COMPAT
+            WindowHeightSizeClass.MEDIUM ->  WindowSizeClassState.Size.MEDIUM
+            else ->  WindowSizeClassState.Size.EXPANDED
         }
 }

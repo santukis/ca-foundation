@@ -1,30 +1,22 @@
 package com.santukis.sample.featurea.secondary
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.ScreenArguments
 import com.santukis.ca.components.scaffold.screenlayouts.ScaffoldScreenLayout
 import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
-import com.santukis.sample.featurea.secondary.states.rememberFeatureASecondaryScreenUiState
 import com.santukis.sample.featurea.secondary.views.FeatureASecondaryScreenContent
 
-class FeatureASecondaryLandscapeScreenLayout : ScaffoldScreenLayout<FeatureASecondaryState>() {
-
-    private lateinit var uiState: FeatureASecondaryScreenUiState
-
-    @Composable
-    override fun UiState(
-        arguments: ScreenArguments,
-        state: FeatureASecondaryState
-    ) {
-        uiState = rememberFeatureASecondaryScreenUiState()
-    }
+class FeatureASecondaryLandscapeScreenLayout : ScaffoldScreenLayout<
+        FeatureASecondaryState, FeatureASecondaryScreenUiState>() {
 
     @Composable
-    override fun BoxScope.Content(
+    override fun Content(
+        modifier: Modifier,
         arguments: ScreenArguments,
         state: FeatureASecondaryState,
+        uiState: FeatureASecondaryScreenUiState,
         onAction: (Action) -> Unit
     ) {
         FeatureASecondaryScreenContent(

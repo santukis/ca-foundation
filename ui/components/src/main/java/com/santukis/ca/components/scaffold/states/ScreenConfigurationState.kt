@@ -6,6 +6,16 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalConfiguration
 
+interface ScreenConfigurationState {
+
+    val windowSizeClassState: WindowSizeClassState
+
+    fun isPortrait(): Boolean
+
+    fun isLandscape(): Boolean
+}
+
+
 @Composable
 fun rememberScreenConfigurationState(
     windowSizeClassState: WindowSizeClassState = rememberWindowSizeClassState(),
@@ -15,7 +25,7 @@ fun rememberScreenConfigurationState(
     return remember(
         windowSizeClassState
     ) {
-        ScreenConfigurationState(
+        DefaultScreenConfigurationState(
             windowSizeClassState = windowSizeClassState,
             configuration = configuration
         )
@@ -23,14 +33,14 @@ fun rememberScreenConfigurationState(
 }
 
 @Immutable
-class ScreenConfigurationState(
-    val windowSizeClassState: WindowSizeClassState,
-    val configuration: Configuration
-) {
+internal class DefaultScreenConfigurationState(
+    override val windowSizeClassState: WindowSizeClassState,
+    private val configuration: Configuration
+) : ScreenConfigurationState {
 
-    fun isPortrait(): Boolean =
+    override fun isPortrait(): Boolean =
         configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-    fun isLandscape(): Boolean =
+    override fun isLandscape(): Boolean =
         configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 }

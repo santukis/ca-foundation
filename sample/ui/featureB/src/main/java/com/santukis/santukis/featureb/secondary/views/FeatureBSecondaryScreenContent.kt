@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,7 +21,6 @@ import com.santukis.santukis.featureb.secondary.FeatureBSecondaryNavigationActio
 import com.santukis.santukis.featureb.secondary.FeatureBSecondaryState
 
 @Suppress("UnusedParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeatureBSecondaryScreenContent(
     state: FeatureBSecondaryState,
@@ -32,7 +32,7 @@ fun FeatureBSecondaryScreenContent(
             .fillMaxSize()
             .background(Color.Yellow)
     ) {
-        var inputText by remember { mutableStateOf("") }
+        var inputText by rememberSaveable { mutableStateOf("") }
 
         Text(text = "Feature B Secondary Screen")
 

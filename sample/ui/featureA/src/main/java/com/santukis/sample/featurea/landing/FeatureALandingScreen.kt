@@ -1,18 +1,17 @@
 package com.santukis.sample.featurea.landing
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import com.santukis.ca.components.scaffold.Screen
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
-import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
 
-class FeatureALandingScreen : Screen<FeatureALandingState>() {
+class FeatureALandingScreen : Screen<FeatureALandingState, FeatureALandingUiState>() {
+
+    override fun screenLayout(
+        state: FeatureALandingState,
+        uiState: FeatureALandingUiState
+    ): ScreenLayout<FeatureALandingState, FeatureALandingUiState> =
+        FeatureALandingScreenLayout()
 
     @Composable
-    override fun rememberScreenLayout(
-        screenConfiguration: ScreenConfigurationState
-    ): ScreenLayout<FeatureALandingState> =
-        remember {
-            FeatureALandingScreenLayout()
-        }
+    override fun uiState(): FeatureALandingUiState = rememberFeatureALandingUiState()
 }

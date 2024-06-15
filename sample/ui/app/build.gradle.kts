@@ -15,6 +15,7 @@ android {
 
 dependencies {
     implementation(projects.injection.core)
+    implementation(projects.injection.koinProvider)
     implementation(projects.ui.navigation)
     implementation(projects.ui.components)
     implementation(projects.ui.theme)

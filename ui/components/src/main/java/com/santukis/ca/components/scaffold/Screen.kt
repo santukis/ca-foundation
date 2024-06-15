@@ -22,18 +22,15 @@ abstract class Screen<S : ScreenState, US : UiState> {
     fun Layout(
         modifier: Modifier = Modifier,
         arguments: ScreenArguments = NoArguments(),
-        stateHolder: StateHolder<S> = inject(),
-        actionHandler: ActionHandler = inject(),
-        navigationHandler: (NavigationAction) -> Unit = {}
+        onAction: (Action) -> Unit = {}
     ) {
-        val state = remember { stateHolder.getState() }
+        val viewModel: CaViewModel<S> = injectViewModel()
+        val state = remember { viewModel.getState() }
         val uiState = uiState()
         val onActions: (Action) -> Unit = remember {
             { action ->
-                when (action) {
-                    is NavigationAction -> navigationHandler(action)
-                    is ScreenAction -> actionHandler.handle(action)
-                }
+                viewModel.handle(action)
+                onAction(action)
             }
         }
         val screenLayout = remember {
@@ -44,20 +41,18 @@ abstract class Screen<S : ScreenState, US : UiState> {
         }
 
         screenLayout.Layout(
-                modifier = modifier,
-                arguments = arguments,
-                state = state.value,
-                uiState = uiState,
-                onAction = onActions
-            )
+            modifier = modifier,
+            arguments = arguments,
+            state = state.value,
+            uiState = uiState,
+            onAction = onActions
+        )
     }
 
     @Composable
-    protected inline fun <reified T : Any> inject(): T =
-        DependencyInjectorProvider
-            .provide()
-            .injectComposable(
-                from = this@Screen::class,
-                to = T::class
-            )
+    private fun injectViewModel(): CaViewModel<S> =
+        DependencyInjectorProvider.getDependency(
+            dependency = CaViewModel::class,
+            into = this::class
+        ) ?: throw NotImplementedError("CaViewModel not provided")
 }

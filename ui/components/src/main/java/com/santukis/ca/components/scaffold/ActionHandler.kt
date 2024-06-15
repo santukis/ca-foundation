@@ -5,5 +5,5 @@ import androidx.compose.runtime.Stable
 @Stable
 interface ActionHandler {
 
-    fun handle(action: ScreenAction)
+    fun handle(action: Action)
 }

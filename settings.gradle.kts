@@ -28,6 +28,7 @@ include(":sample:ui:featureC")
 include(":sample:ui:featureD")
 
 include(":injection:core")
+include(":injection:koin-provider")
 
 include(":domain")
 

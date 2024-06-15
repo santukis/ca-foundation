@@ -1,4 +1,4 @@
-package com.santukis.injection.providers.koin
+package com.santukis.injection.koininjection
 
 import com.santukis.injection.core.DILibrary
 

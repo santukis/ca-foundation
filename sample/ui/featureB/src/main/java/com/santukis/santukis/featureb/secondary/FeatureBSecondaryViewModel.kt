@@ -1,18 +1,18 @@
 package com.santukis.santukis.featureb.secondary
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.CaViewModel
+import com.santukis.ca.components.scaffold.states.ScaffoldState
+import com.santukis.ca.components.scaffold.states.scaffoldState
 
 class FeatureBSecondaryViewModel :
-    CaViewModel<FeatureBSecondaryState>() {
+    CaViewModel<FeatureBSecondaryState, ScaffoldState>() {
 
-    private val state: MutableState<FeatureBSecondaryState> =
-        mutableStateOf(FeatureBSecondaryState())
+    override fun initializeState(): FeatureBSecondaryState = FeatureBSecondaryState()
 
-    override fun getState(): State<FeatureBSecondaryState> = state
+    @Composable
+    override fun initializeUiState(): ScaffoldState = scaffoldState()
 
     override fun handle(action: Action) {
         // no-op

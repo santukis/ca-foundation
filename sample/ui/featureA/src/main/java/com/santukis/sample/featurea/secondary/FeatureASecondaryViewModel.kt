@@ -1,21 +1,19 @@
 package com.santukis.sample.featurea.secondary
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
+import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ActionHandler
 import com.santukis.ca.components.scaffold.CaViewModel
-import com.santukis.ca.components.scaffold.ScreenAction
-import com.santukis.ca.components.scaffold.StateHolder
+import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
+import com.santukis.sample.featurea.secondary.states.featureASecondaryScreenUiState
 
-class FeatureASecondaryViewModel : CaViewModel<FeatureASecondaryState>() {
+class FeatureASecondaryViewModel :
+    CaViewModel<FeatureASecondaryState, FeatureASecondaryScreenUiState>() {
 
-    private val state: MutableState<FeatureASecondaryState> =
-        mutableStateOf(FeatureASecondaryState())
+    override fun initializeState(): FeatureASecondaryState = FeatureASecondaryState()
 
-    override fun getState(): State<FeatureASecondaryState> = state
+    @Composable
+    override fun initializeUiState(): FeatureASecondaryScreenUiState =
+        featureASecondaryScreenUiState()
 
     override fun handle(action: Action) {
         // no-op

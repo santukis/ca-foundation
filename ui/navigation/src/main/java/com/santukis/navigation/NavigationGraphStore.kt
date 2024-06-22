@@ -15,10 +15,16 @@ internal class DefaultNavigationGraphStore : NavigationGraphStore {
         dependentGraphs.add(graph)
     }
 
-    override fun NavGraphBuilder.buildGraph(router: Router) {
+    override fun NavGraphBuilder.buildGraph(
+        router: Router,
+        inputArguments: InputArguments
+    ) {
         dependentGraphs.forEach { navigationGraph ->
             with(navigationGraph) {
-                buildGraph(router)
+                buildGraph(
+                    router = router,
+                    inputArguments = inputArguments
+                )
             }
         }
     }

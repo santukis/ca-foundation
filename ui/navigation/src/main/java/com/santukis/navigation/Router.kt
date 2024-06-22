@@ -14,7 +14,10 @@ interface Router {
 
     fun getNavController(): NavHostController
 
-    fun navigate(arguments: DestinationArguments, builder: NavOptionsBuilder.() -> Unit = {})
+    fun navigate(
+        arguments: DestinationArguments,
+        builder: NavOptionsBuilder.() -> Unit = {}
+    )
 
     fun popBackStack()
 
@@ -34,7 +37,7 @@ interface Router {
 
 internal class DefaultRouter(
     private val navController: NavHostController,
-    private val argumentsMapper: ArgumentsMapper
+    private val argumentsMapper: ArgumentsMapper,
 ) : Router {
 
     private var navigationKey = "navigationKey"
@@ -100,8 +103,8 @@ fun rememberRouter(
     argumentsMapper: ArgumentsMapper,
     navController: NavHostController = rememberNavController(),
 ): Router = remember(argumentsMapper) {
-    DefaultRouter(
-        navController,
-        argumentsMapper
-    )
+        DefaultRouter(
+            navController = navController,
+            argumentsMapper = argumentsMapper,
+        )
 }

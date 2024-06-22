@@ -1,16 +1,17 @@
 package com.santukis.scaffold.landing
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Action
 import com.santukis.ca.components.scaffold.CaViewModel
+import com.santukis.ca.components.scaffold.states.NavigationState
+import com.santukis.ca.components.scaffold.states.navigationState
 
-class AppLandingViewModel : CaViewModel<AppLandingState>() {
+class AppLandingViewModel : CaViewModel<AppLandingState, NavigationState>() {
 
-    private var state: MutableState<AppLandingState> = mutableStateOf(AppLandingState())
+    override fun initializeState(): AppLandingState = AppLandingState()
 
-    override fun getState(): State<AppLandingState> = state
+    @Composable
+    override fun initializeUiState(): NavigationState = navigationState()
 
     override fun handle(action: Action) {
         // no-op

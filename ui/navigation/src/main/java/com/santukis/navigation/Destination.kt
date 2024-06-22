@@ -1,33 +1,45 @@
 package com.santukis.navigation
 
 import android.app.Activity
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavDeepLink
 import kotlin.reflect.KClass
 
 @Stable
 interface Destination {
-    val template: String
+    val template: DestinationTemplate
 }
 
 @Stable
 interface ActivityDestination : Destination {
+
     fun getActivityDestination(): KClass<out Activity>?
 }
 
 @Stable
-interface ScreenDestination : Destination {
+interface ComposableDestination : Destination {
 
-    fun getArguments(): List<NamedNavArgument> = listOf()
-
-    fun getDeepLinks(): List<NavDeepLink> = listOf()
+    val router: Router
 
     @Composable
-    fun DestinationScreen(
-        router: Router,
-        backStackEntry: NavBackStackEntry
-    )
+    fun DestinationScreen(arguments: InputArguments)
+
+    fun enterTransition(): (AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition) =
+        { fadeIn(animationSpec = tween(700)) }
+
+    fun exitTransition(): (AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition) =
+        { fadeOut(animationSpec = tween(700)) }
+
+    fun popEnterTransition(): (AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition) =
+        enterTransition()
+
+    fun popExitTransition(): (AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition) =
+        exitTransition()
 }

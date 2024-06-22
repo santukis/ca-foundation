@@ -12,11 +12,11 @@ interface DependencyInjector {
         clazz: KClass<*>,
         scopeId: String? = null,
         qualifier: String? = null
-    ): T?
+    ): T
 
     @Composable
     fun <T : Any> getDependency(
         dependency: KClass<*>,
-        into:  KClass<*>
+        into: KClass<*>
     ): T?
 }

@@ -3,7 +3,7 @@ package com.santukis.santukis.featureb.secondary
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
+import com.santukis.navigation.InputArguments
 import com.santukis.ca.components.scaffold.screenlayouts.ScaffoldScreenLayout
 import com.santukis.ca.components.scaffold.states.ScaffoldState
 import com.santukis.santukis.featureb.secondary.views.FeatureBSecondaryScreenContent
@@ -13,7 +13,7 @@ class FeatureBSecondaryScreenLayout : ScaffoldScreenLayout<FeatureBSecondaryStat
     @Composable
     override fun Content(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: FeatureBSecondaryState,
         uiState: ScaffoldState,
         onAction: (Action) -> Unit

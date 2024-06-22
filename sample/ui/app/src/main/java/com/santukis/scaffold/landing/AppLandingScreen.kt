@@ -1,20 +1,15 @@
 package com.santukis.scaffold.landing
 
-import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.UiState
-import com.santukis.ca.components.scaffold.rememberUiState
+import com.santukis.ca.components.scaffold.screenlayouts.NavigationScreenLayout
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.components.scaffold.states.NavigationState
 
-class AppLandingScreen : Screen<AppLandingState, UiState>() {
+class AppLandingScreen : Screen<AppLandingState, NavigationState>() {
 
     override fun screenLayout(
         state: AppLandingState,
-        uiState: UiState
-    ): ScreenLayout<AppLandingState, UiState> =
-        AppLandingScreenLayout()
-
-    @Composable
-    override fun uiState(): UiState = rememberUiState()
+        uiState: NavigationState
+    ): ScreenLayout<AppLandingState, NavigationState> = NavigationScreenLayout()
 
 }

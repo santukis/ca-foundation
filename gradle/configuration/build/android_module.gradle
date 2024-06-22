@@ -1,5 +1,5 @@
 apply plugin: "kotlin-parcelize"
-apply from: "$rootDir/gradle/configuration/detekt/detekt.gradle"
+//apply from: "$rootDir/gradle/configuration/detekt/detekt.gradle"
 
 android {
     compileSdk = 34

@@ -9,11 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
+import com.santukis.navigation.InputArguments
 import com.santukis.ca.components.scaffold.screenlayouts.NavigationDrawerScreenLayout
-import com.santukis.ca.components.scaffold.states.NavigationDrawerState
-import com.santukis.sample.featurea.landing.views.FeatureALandingInputArguments
-import com.santukis.sample.featurea.landing.views.FeatureALandingScreenContent
 
 class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<
         FeatureALandingState, FeatureALandingUiState>() {
@@ -21,7 +18,7 @@ class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<
     @Composable
     override fun DrawerContent(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: FeatureALandingState,
         uiState: FeatureALandingUiState,
         onAction: (Action) -> Unit
@@ -40,7 +37,7 @@ class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<
     @Composable
     override fun Content(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: FeatureALandingState,
         uiState: FeatureALandingUiState,
         onAction: (Action) -> Unit

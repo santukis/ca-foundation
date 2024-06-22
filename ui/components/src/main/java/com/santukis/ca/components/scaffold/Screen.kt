@@ -6,6 +6,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
 import com.santukis.injection.core.DependencyInjectorProvider
+import com.santukis.navigation.InputArguments
+import com.santukis.navigation.ScreenArguments
 
 @Stable
 abstract class Screen<S : ScreenState, US : UiState> {
@@ -16,41 +18,35 @@ abstract class Screen<S : ScreenState, US : UiState> {
     ): ScreenLayout<S, US>
 
     @Composable
-    protected abstract fun uiState(): US
-
-    @Composable
     fun Layout(
         modifier: Modifier = Modifier,
-        arguments: ScreenArguments = NoArguments(),
-        onAction: (Action) -> Unit = {}
+        arguments: InputArguments = ScreenArguments(arguments = Unit)
     ) {
-        val viewModel: CaViewModel<S> = injectViewModel()
-        val state = remember { viewModel.getState() }
-        val uiState = uiState()
-        val onActions: (Action) -> Unit = remember {
-            { action ->
-                viewModel.handle(action)
-                onAction(action)
-            }
-        }
+        val viewModel: CaViewModel<S, US> = injectViewModel()
+        val state = viewModel.rememberState().value
+        val uiState = viewModel.rememberUiState().value
         val screenLayout = remember {
             screenLayout(
-                state = state.value,
+                state = state,
                 uiState = uiState
             )
         }
 
+        viewModel.InitializeHandler()
+
         screenLayout.Layout(
             modifier = modifier,
             arguments = arguments,
-            state = state.value,
+            state = state,
             uiState = uiState,
-            onAction = onActions
+            onAction = { action ->
+                viewModel.execute(action)
+            }
         )
     }
 
     @Composable
-    private fun injectViewModel(): CaViewModel<S> =
+    private fun injectViewModel(): CaViewModel<S, US> =
         DependencyInjectorProvider.getDependency(
             dependency = CaViewModel::class,
             into = this::class

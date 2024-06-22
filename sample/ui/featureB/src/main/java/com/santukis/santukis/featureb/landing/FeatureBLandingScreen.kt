@@ -1,10 +1,8 @@
 package com.santukis.santukis.featureb.landing
 
-import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Screen
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
 import com.santukis.ca.components.scaffold.states.ScaffoldState
-import com.santukis.ca.components.scaffold.states.rememberScaffoldState
 
 class FeatureBLandingScreen : Screen<FeatureBLandingState, ScaffoldState>() {
 
@@ -13,7 +11,4 @@ class FeatureBLandingScreen : Screen<FeatureBLandingState, ScaffoldState>() {
         uiState: ScaffoldState
     ): ScreenLayout<FeatureBLandingState, ScaffoldState> =
         FeatureBLandingScreenLayout()
-
-    @Composable
-    override fun uiState(): ScaffoldState = rememberScaffoldState()
 }

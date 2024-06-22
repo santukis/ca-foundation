@@ -3,7 +3,6 @@ package com.santukis.ca.components.scaffold.states
 import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalConfiguration
 
 interface ScreenConfigurationState {
@@ -15,21 +14,16 @@ interface ScreenConfigurationState {
     fun isLandscape(): Boolean
 }
 
-
 @Composable
-fun rememberScreenConfigurationState(
-    windowSizeClassState: WindowSizeClassState = rememberWindowSizeClassState(),
+fun screenConfigurationState(
+    windowSizeClassState: WindowSizeClassState = windowSizeClassState(),
 ): ScreenConfigurationState {
     val configuration = LocalConfiguration.current
 
-    return remember(
-        windowSizeClassState
-    ) {
-        DefaultScreenConfigurationState(
-            windowSizeClassState = windowSizeClassState,
-            configuration = configuration
-        )
-    }
+    return DefaultScreenConfigurationState(
+        windowSizeClassState = windowSizeClassState,
+        configuration = configuration
+    )
 }
 
 @Immutable

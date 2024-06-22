@@ -1,10 +1,9 @@
 package com.santukis.sample.featurea.secondary
 
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
+import com.santukis.navigation.InputArguments
 import com.santukis.ca.components.scaffold.screenlayouts.ScaffoldScreenLayout
 import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
 import com.santukis.sample.featurea.secondary.views.FeatureASecondaryScreenContent
@@ -16,7 +15,7 @@ class FeatureASecondaryPortraitScreenLayout : ScaffoldScreenLayout<
     @Composable
     override fun TopBar(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: FeatureASecondaryState,
         uiState: FeatureASecondaryScreenUiState,
         onAction: (Action) -> Unit
@@ -31,7 +30,7 @@ class FeatureASecondaryPortraitScreenLayout : ScaffoldScreenLayout<
     @Composable
     override fun Content(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: FeatureASecondaryState,
         uiState: FeatureASecondaryScreenUiState,
         onAction: (Action) -> Unit

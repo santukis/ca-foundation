@@ -1,27 +1,25 @@
 package com.santukis.sample.featurea.secondary
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.navigation.NavBackStackEntry
+import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.components.scaffold.Screen
+import com.santukis.ca.components.scaffold.ScreenDestination
+import com.santukis.navigation.DestinationTemplate
 import com.santukis.navigation.Router
-import com.santukis.navigation.ScreenDestination
 import com.santukis.sample.featurea.secondary.FeatureASecondaryNavigationAction.GoBack
+import com.santukis.sample.featurea.secondary.navigation.FeatureASecondaryDestinationTemplate
 
-class FeatureASecondaryDestination : ScreenDestination {
+class FeatureASecondaryDestination(
+    override val router: Router
+) : ScreenDestination(router) {
 
-    override val template: String = "featureA/secondary"
+    override val template: DestinationTemplate = FeatureASecondaryDestinationTemplate()
 
-    @Composable
-    override fun DestinationScreen(
-        router: Router,
-        backStackEntry: NavBackStackEntry
-    ) {
-        val screen = remember { FeatureASecondaryScreen() }
+    override fun getScreenDestination(): Screen<*, *> = FeatureASecondaryScreen()
 
-        screen.Layout { action ->
-            when (action) {
-                is GoBack -> router.popBackStack()
-            }
+    override fun handle(action: Action) {
+        when (action) {
+            is GoBack -> router.popBackStack()
         }
     }
+
 }

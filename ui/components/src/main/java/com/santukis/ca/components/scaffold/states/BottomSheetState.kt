@@ -5,7 +5,6 @@ import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -17,7 +16,7 @@ interface BottomSheetState : VisibilityState {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun rememberBottomSheetState(
+fun bottomSheetState(
     sheetState: SheetState = rememberStandardBottomSheetState(
         initialValue = SheetValue.Hidden,
         skipHiddenState = false
@@ -25,12 +24,10 @@ fun rememberBottomSheetState(
 ): BottomSheetState {
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
-    return remember {
-        DefaultBottomSheetState(
-            sheetState = sheetState,
-            coroutineScope = coroutineScope
-        )
-    }
+    return DefaultBottomSheetState(
+        sheetState = sheetState,
+        coroutineScope = coroutineScope
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

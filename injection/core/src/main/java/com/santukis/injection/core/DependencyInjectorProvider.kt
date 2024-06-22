@@ -25,8 +25,8 @@ object DependencyInjectorProvider : DependencyInjector {
         clazz: KClass<*>,
         scopeId: String?,
         qualifier: String?
-    ): T? =
-        providers.firstNotNullOfOrNull { provider ->
+    ): T =
+        providers.firstNotNullOf { provider ->
             provider.getDependency(
                 clazz = clazz,
                 scopeId = scopeId,
@@ -37,7 +37,7 @@ object DependencyInjectorProvider : DependencyInjector {
     @Composable
     override fun <T : Any> getDependency(
         dependency: KClass<*>,
-        into:  KClass<*>
+        into: KClass<*>
     ): T? =
         providers.firstNotNullOfOrNull { provider ->
             provider.getDependency(

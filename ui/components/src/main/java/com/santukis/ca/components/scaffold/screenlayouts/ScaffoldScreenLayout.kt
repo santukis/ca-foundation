@@ -13,18 +13,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
 import com.santukis.ca.components.scaffold.ScreenState
-import com.santukis.ca.components.scaffold.arguments.SnackbarArguments
 import com.santukis.ca.components.scaffold.states.ScaffoldState
+import com.santukis.navigation.InputArguments
+import com.santukis.navigation.ScreenArguments
 
 abstract class ScaffoldScreenLayout<
-        S : ScreenState, US : ScaffoldState> : ScreenLayout<S, US>() {
+    S : ScreenState,
+    US : ScaffoldState
+    > : ScreenLayout<S, US>() {
 
     @Composable
     override fun Layout(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -56,7 +58,7 @@ abstract class ScaffoldScreenLayout<
                 ) { snackBarData ->
                     Snackbar(
                         modifier = Modifier,
-                        arguments = SnackbarArguments(snackBarData),
+                        arguments = ScreenArguments(arguments = snackBarData),
                         state = state,
                         uiState = uiState,
                         onAction = onAction
@@ -104,7 +106,7 @@ abstract class ScaffoldScreenLayout<
     @Composable
     protected open fun TopBar(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -115,7 +117,7 @@ abstract class ScaffoldScreenLayout<
     @Composable
     protected open fun BottomBar(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -126,7 +128,7 @@ abstract class ScaffoldScreenLayout<
     @Composable
     protected open fun Snackbar(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -137,7 +139,7 @@ abstract class ScaffoldScreenLayout<
     @Composable
     protected open fun FloatingActionButton(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -148,7 +150,7 @@ abstract class ScaffoldScreenLayout<
     @Composable
     protected abstract fun Content(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit

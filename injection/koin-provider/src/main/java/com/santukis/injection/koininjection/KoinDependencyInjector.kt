@@ -36,11 +36,11 @@ class KoinDependencyInjector : DependencyInjector {
         clazz: KClass<*>,
         scopeId: String?,
         qualifier: String?
-    ): T? =
+    ): T =
         if (scopeId.isNullOrEmpty()) {
             KoinJavaComponent
                 .getKoin()
-                .getOrNull(
+                .get(
                     clazz = clazz,
                     qualifier = qualifier?.let { named(name = it) }
                 )
@@ -48,7 +48,7 @@ class KoinDependencyInjector : DependencyInjector {
             KoinJavaComponent
                 .getKoin()
                 .getScope(scopeId = scopeId)
-                .getOrNull(
+                .get(
                     clazz = clazz,
                     qualifier = qualifier?.let { named(name = it) }
                 )
@@ -57,7 +57,7 @@ class KoinDependencyInjector : DependencyInjector {
     @Composable
     override fun <T : Any> getDependency(
         dependency: KClass<*>,
-        into:  KClass<*>
+        into: KClass<*>
     ): T? =
         when {
             dependency == CaViewModel::class -> injectViewModel(into = into) as? T
@@ -68,9 +68,9 @@ class KoinDependencyInjector : DependencyInjector {
         }
 
     @Composable
-    private fun  injectViewModel(
-        into:  KClass<*>
-    ): CaViewModel<*> =
+    private fun injectViewModel(
+        into: KClass<*>
+    ): CaViewModel<*, *> =
         koinViewModel(
             scope = getKoin()
                 .getOrCreateScope(
@@ -80,11 +80,10 @@ class KoinDependencyInjector : DependencyInjector {
                 )
         )
 
-
     @Composable
     private fun <T : Any> injectDependency(
         dependency: KClass<*>,
-        into:  KClass<*>? = null
+        into: KClass<*>? = null
     ): T? =
         if (into == null) {
             getKoin().getOrNull(clazz = dependency)

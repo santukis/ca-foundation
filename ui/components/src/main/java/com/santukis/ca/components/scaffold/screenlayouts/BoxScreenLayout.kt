@@ -6,18 +6,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
 import com.santukis.ca.components.scaffold.ScreenState
 import com.santukis.ca.components.scaffold.UiState
+import com.santukis.navigation.InputArguments
 
 abstract class BoxScreenLayout<
-        S : ScreenState,
-        US : UiState> : ScreenLayout<S, US>() {
+    S : ScreenState,
+    US : UiState
+    > : ScreenLayout<S, US>() {
 
     @Composable
     protected abstract fun BoxScope.Content(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -26,7 +27,7 @@ abstract class BoxScreenLayout<
     @Composable
     override fun Layout(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit

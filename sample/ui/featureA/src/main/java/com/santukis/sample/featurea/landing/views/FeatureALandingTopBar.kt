@@ -13,14 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
+import com.santukis.navigation.InputArguments
 import com.santukis.sample.featurea.landing.FeatureALandingAction
 import com.santukis.sample.featurea.landing.FeatureALandingState
 
 @Suppress("UnusedParameter")
 @Composable
 fun FeatureALandingTopBar(
-    arguments: ScreenArguments,
+    arguments: InputArguments,
     state: FeatureALandingState,
     onAction: (Action) -> Unit,
     modifier: Modifier = Modifier

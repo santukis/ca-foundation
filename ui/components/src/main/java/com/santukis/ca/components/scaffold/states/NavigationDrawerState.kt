@@ -4,7 +4,6 @@ import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import com.santukis.ca.components.scaffold.UiState
 import kotlinx.coroutines.CoroutineScope
@@ -15,27 +14,25 @@ interface NavigationDrawerState : UiState, VisibilityState {
 }
 
 @Composable
-fun rememberNavigationDrawerUiState(
+fun navigationDrawerUiState(
     initialValue: DrawerValue = DrawerValue.Closed
 ): NavigationDrawerState {
-    val screenConfigurationState = rememberScreenConfigurationState()
+    val screenConfigurationState = screenConfigurationState()
     val drawerState = rememberDrawerState(initialValue = initialValue)
     val coroutineScope = rememberCoroutineScope()
 
-    return remember {
-        DefaultNavigationDrawerState(
-            drawerState = drawerState,
-            screenConfigurationState = screenConfigurationState,
-            coroutineScope = coroutineScope
-        )
-    }
+    return DefaultNavigationDrawerState(
+        drawerState = drawerState,
+        screenConfigurationState = screenConfigurationState,
+        coroutineScope = coroutineScope
+    )
 }
 
 internal class DefaultNavigationDrawerState(
     override val drawerState: DrawerState,
     override val screenConfigurationState: ScreenConfigurationState,
     private val coroutineScope: CoroutineScope
-): NavigationDrawerState {
+) : NavigationDrawerState {
 
     override fun isVisible(): Boolean = drawerState.isOpen
 

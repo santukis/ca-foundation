@@ -7,9 +7,9 @@ import com.santukis.sample.featurec.di.FeatureCDILibrary
 import com.santukis.sample.featured.di.FeatureDDILibrary
 import com.santukis.santukis.featureb.di.FeatureBDILibrary
 
-class AppDIGraph : com.santukis.injection.koininjection.KoinDIGraph() {
+class AppDIGraph : KoinDIGraph() {
 
-    override fun getLibraries(): List<com.santukis.injection.koininjection.KoinDILibrary> =
+    override fun getLibraries(): List<KoinDILibrary> =
         listOf(
             AppDILibrary(),
             FeatureADILibrary(),

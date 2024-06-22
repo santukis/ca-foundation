@@ -8,24 +8,32 @@ import androidx.navigation.compose.composable
 @Stable
 interface NavigationGraph {
 
-    fun NavGraphBuilder.buildGraph(router: Router)
+    fun NavGraphBuilder.buildGraph(
+        router: Router,
+        inputArguments: InputArguments
+    )
 
     fun getStartDestination(): String
 }
 
 @Stable
 fun NavGraphBuilder.navigate(
-    router: Router,
-    destination: ScreenDestination
+    destination: ComposableDestination,
+    inputArguments: InputArguments
 ) {
     composable(
-        route = destination.template,
-        arguments = destination.getArguments(),
-        deepLinks = destination.getDeepLinks()
+        route = destination.template.template,
+        arguments =destination.template.getArguments(),
+        deepLinks = destination.template.getDeepLinks(),
+        enterTransition = destination.enterTransition(),
+        exitTransition = destination.exitTransition(),
+        popEnterTransition = destination.popEnterTransition(),
+        popExitTransition = destination.popExitTransition()
     ) { backStackEntry ->
         destination.DestinationScreen(
-            router = router,
-            backStackEntry = backStackEntry
+            arguments = inputArguments + ScreenArguments(
+                arguments = backStackEntry.arguments
+            )
         )
     }
 }
@@ -35,7 +43,7 @@ fun NavGraphBuilder.navigateToActivity(
     destination: ActivityDestination
 ) {
     activity(
-        route = destination.template
+        route = destination.template.template
     ) {
         activityClass = destination.getActivityDestination()
     }

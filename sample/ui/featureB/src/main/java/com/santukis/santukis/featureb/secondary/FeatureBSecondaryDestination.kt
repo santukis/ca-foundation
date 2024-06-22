@@ -1,28 +1,24 @@
 package com.santukis.santukis.featureb.secondary
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.navigation.NavBackStackEntry
+import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.components.scaffold.Screen
+import com.santukis.ca.components.scaffold.ScreenDestination
+import com.santukis.navigation.DestinationTemplate
 import com.santukis.navigation.Router
-import com.santukis.navigation.ScreenDestination
 import com.santukis.santukis.featureb.secondary.FeatureBSecondaryNavigationAction.NavigateToFeatureBLanding
+import com.santukis.santukis.featureb.secondary.navigation.FeatureBSecondaryDestinationTemplate
 
-class FeatureBSecondaryDestination : ScreenDestination {
+class FeatureBSecondaryDestination(
+    override val router: Router
+) : ScreenDestination(router) {
 
-    override val template: String
-        get() = "featureB/secondary"
+    override val template: DestinationTemplate = FeatureBSecondaryDestinationTemplate()
 
-    @Composable
-    override fun DestinationScreen(
-        router: Router,
-        backStackEntry: NavBackStackEntry
-    ) {
-        val screen = remember { FeatureBSecondaryScreen() }
+    override fun getScreenDestination(): Screen<*, *> = FeatureBSecondaryScreen()
 
-        screen.Layout { action ->
-            when (action) {
-                is NavigateToFeatureBLanding -> router.setResult(action.arguments)
-            }
+    override fun handle(action: Action) {
+        when (action) {
+            is NavigateToFeatureBLanding -> router.setResult(action.arguments)
         }
     }
 }

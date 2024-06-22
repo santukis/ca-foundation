@@ -2,9 +2,8 @@ package com.santukis.ca.components.scaffold
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.remember
 import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
-import com.santukis.ca.components.scaffold.states.rememberScreenConfigurationState
+import com.santukis.ca.components.scaffold.states.screenConfigurationState
 
 @Stable
 interface UiState {
@@ -12,14 +11,12 @@ interface UiState {
 }
 
 @Composable
-fun rememberUiState(
-    screenConfigurationState: ScreenConfigurationState = rememberScreenConfigurationState()
-): UiState = remember {
-    DefaultUiState(
-        screenConfigurationState = screenConfigurationState
-    )
-}
+fun uiState(
+    screenConfigurationState: ScreenConfigurationState = screenConfigurationState()
+): UiState = DefaultUiState(
+    screenConfigurationState = screenConfigurationState
+)
 
 private class DefaultUiState(
     override val screenConfigurationState: ScreenConfigurationState
-): UiState
+) : UiState

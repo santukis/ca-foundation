@@ -1,10 +1,8 @@
 package com.santukis.sample.featurea.secondary
 
-import androidx.compose.runtime.Composable
 import com.santukis.ca.components.scaffold.Screen
 import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
 import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
-import com.santukis.sample.featurea.secondary.states.rememberFeatureASecondaryScreenUiState
 
 class FeatureASecondaryScreen : Screen<FeatureASecondaryState, FeatureASecondaryScreenUiState>() {
 
@@ -17,8 +15,4 @@ class FeatureASecondaryScreen : Screen<FeatureASecondaryState, FeatureASecondary
             true -> FeatureASecondaryPortraitScreenLayout()
             false -> FeatureASecondaryLandscapeScreenLayout()
         }
-
-    @Composable
-    override fun uiState(): FeatureASecondaryScreenUiState =
-        rememberFeatureASecondaryScreenUiState()
 }

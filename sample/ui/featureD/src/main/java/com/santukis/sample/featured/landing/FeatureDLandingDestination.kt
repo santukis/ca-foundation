@@ -1,15 +1,16 @@
 package com.santukis.sample.featured.landing
 
-import android.app.Activity
-import com.santukis.navigation.ActivityDestination
-import kotlin.reflect.KClass
+import com.santukis.ca.components.scaffold.Screen
+import com.santukis.ca.components.scaffold.ScreenDestination
+import com.santukis.navigation.DestinationTemplate
+import com.santukis.navigation.Router
+import com.santukis.sample.featured.landing.navigation.FeatureDLandingDestinationTemplate
 
-object FeatureDLandingDestination : ActivityDestination {
+class FeatureDLandingDestination(
+    override val router: Router
+) : ScreenDestination(router) {
 
-    private const val ANY_PARAM_KEY = "anyParam"
+    override val template: DestinationTemplate = FeatureDLandingDestinationTemplate()
 
-    override val template: String = "featureD/landing/{$ANY_PARAM_KEY}"
-
-    override fun getActivityDestination(): KClass<out Activity>? =
-        FeatureDLandingActivity::class
+    override fun getScreenDestination(): Screen<*, *> = FeatureDLandingScreen()
 }

@@ -6,5 +6,5 @@ class ToFeatureDArguments(
     private val anyParam: String,
 ) : DestinationArguments {
 
-    override fun getRoute(): String = "featureD/landing/$anyParam"
+    override fun getRoute(): String = "featureD/host/$anyParam"
 }

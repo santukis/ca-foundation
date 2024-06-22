@@ -6,17 +6,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.ScreenArguments
 import com.santukis.ca.components.scaffold.ScreenState
 import com.santukis.ca.components.scaffold.states.NavigationDrawerState
+import com.santukis.navigation.InputArguments
 
 abstract class NavigationDrawerScreenLayout<
-        S : ScreenState, US : NavigationDrawerState> : ScreenLayout<S, US>() {
+    S : ScreenState,
+    US : NavigationDrawerState
+    > : ScreenLayout<S, US>() {
 
     @Composable
     override fun Layout(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -55,7 +57,7 @@ abstract class NavigationDrawerScreenLayout<
     @Composable
     protected open fun DrawerContent(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit
@@ -66,7 +68,7 @@ abstract class NavigationDrawerScreenLayout<
     @Composable
     protected open fun Content(
         modifier: Modifier,
-        arguments: ScreenArguments,
+        arguments: InputArguments,
         state: S,
         uiState: US,
         onAction: (Action) -> Unit

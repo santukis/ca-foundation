@@ -18,12 +18,11 @@ interface WindowSizeClassState {
 
     fun getWidthSize(): Size
 
-    fun getHeightSize():  Size
-
+    fun getHeightSize(): Size
 }
 
 @Composable
-fun rememberWindowSizeClassState(
+fun windowSizeClassState(
     context: Context = LocalContext.current
 ): WindowSizeClassState {
     val metrics = WindowMetricsCalculator
@@ -44,14 +43,14 @@ internal class DefaultWindowSizeClassState(
     override fun getWidthSize(): WindowSizeClassState.Size =
         when (windowSizeClass.windowWidthSizeClass) {
             WindowWidthSizeClass.COMPACT -> WindowSizeClassState.Size.COMPAT
-            WindowWidthSizeClass.MEDIUM ->  WindowSizeClassState.Size.MEDIUM
-            else ->  WindowSizeClassState.Size.EXPANDED
+            WindowWidthSizeClass.MEDIUM -> WindowSizeClassState.Size.MEDIUM
+            else -> WindowSizeClassState.Size.EXPANDED
         }
 
-    override fun getHeightSize():  WindowSizeClassState.Size =
+    override fun getHeightSize(): WindowSizeClassState.Size =
         when (windowSizeClass.windowHeightSizeClass) {
-            WindowHeightSizeClass.COMPACT ->  WindowSizeClassState.Size.COMPAT
-            WindowHeightSizeClass.MEDIUM ->  WindowSizeClassState.Size.MEDIUM
-            else ->  WindowSizeClassState.Size.EXPANDED
+            WindowHeightSizeClass.COMPACT -> WindowSizeClassState.Size.COMPAT
+            WindowHeightSizeClass.MEDIUM -> WindowSizeClassState.Size.MEDIUM
+            else -> WindowSizeClassState.Size.EXPANDED
         }
 }

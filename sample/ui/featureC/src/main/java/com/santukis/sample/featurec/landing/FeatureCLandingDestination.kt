@@ -1,45 +1,24 @@
 package com.santukis.sample.featurec.landing
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
+import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.components.scaffold.Screen
+import com.santukis.ca.components.scaffold.ScreenDestination
+import com.santukis.navigation.DestinationTemplate
 import com.santukis.navigation.Router
-import com.santukis.navigation.ScreenDestination
 import com.santukis.sample.featurec.landing.FeatureCLandingNavigationAction.NavigateToFeatureAScreen
-import com.santukis.sample.featurec.landing.views.FeatureCLandingInputArguments
+import com.santukis.sample.featurec.landing.navigation.FeatureCLandingDestinationTemplate
 
-object FeatureCLandingDestination : ScreenDestination {
+class FeatureCLandingDestination(
+    override val router: Router
+) : ScreenDestination(router) {
 
-    private const val ANY_PARAM_KEY = "anyParam"
+    override val template: DestinationTemplate = FeatureCLandingDestinationTemplate()
 
-    override val template: String
-        get() = "featureC/landing/{$ANY_PARAM_KEY}"
+    override fun getScreenDestination(): Screen<*, *> = FeatureCLandingScreen()
 
-    override fun getArguments(): List<NamedNavArgument> =
-        listOf(
-            navArgument(ANY_PARAM_KEY) {
-                type = NavType.StringType
-            }
-        )
-
-    @Composable
-    override fun DestinationScreen(
-        router: Router,
-        backStackEntry: NavBackStackEntry
-    ) {
-        val screen = remember { FeatureCLandingScreen() }
-
-        screen.Layout(
-            arguments = FeatureCLandingInputArguments(
-                backStackEntry.arguments?.getString(ANY_PARAM_KEY).orEmpty()
-            )
-        ) { action ->
-            when (action) {
-                is NavigateToFeatureAScreen -> router.setResult(arguments = action.arguments)
-            }
+    override fun handle(action: Action) {
+        when (action) {
+            is NavigateToFeatureAScreen -> router.setResult(arguments = action.arguments)
         }
     }
 }

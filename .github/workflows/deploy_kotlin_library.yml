@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check if Major version
         run: |
@@ -38,7 +38,7 @@ jobs:
         if: startsWith(github.event.pull_request.title, 'Patch')
 
       - name: Set next version
-        uses: MCKanpolat/auto-semver-action@v1
+        uses: MCKanpolat/auto-semver-action@v2
         id: version
         with:
           releaseType: ${{ env.VERSION_INCREMENT }}
@@ -46,7 +46,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.version }}
         env:

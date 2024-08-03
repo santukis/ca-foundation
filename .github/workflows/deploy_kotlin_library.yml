@@ -66,9 +66,9 @@ jobs:
         run: ./gradlew :data:datasource:remote:assemble :data:repository:assemble :domain:assemble :injection:core:assembleRelease :injection:koin-provider:assembleRelease :ui:navigation:assembleRelease :ui:theme:assembleRelease :ui:components:assembleRelease
 
       - name: Publish package
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: publish
+        uses: gradle/actions/setup-gradle@v3
+        run: ./gradlew publish
+
         env:
           GITHUB_VERSION: ${{ steps.version.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

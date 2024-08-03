@@ -7,19 +7,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 
-abstract class CaViewModel<S : ScreenState, US : UiState> : ViewModel(), ActionHandler {
+abstract class CaViewModel<S : ScreenState, US : UiState> :
+    ViewModel(),
+    StateHandler<S, US> {
 
     private lateinit var state: MutableState<S>
 
     private lateinit var uiState: MutableState<US>
 
-    abstract fun initializeState(): S
-
     @Composable
-    abstract fun initializeUiState(): US
-
-    @Composable
-    fun rememberState(): State<S> {
+    override fun rememberState(): State<S> {
         val state = initializeState()
 
         this@CaViewModel.state = remember {
@@ -29,16 +26,16 @@ abstract class CaViewModel<S : ScreenState, US : UiState> : ViewModel(), ActionH
         return this@CaViewModel.state
     }
 
-    fun updateState(update: (S) -> S) {
+    override fun updateState(update: (S) -> S) {
         state.value = update(state.value)
     }
 
-    fun executeOnState(state: (S) -> Unit) {
-        state(this.state.value)
+    override fun executeOnState(execute: (S) -> Unit) {
+        execute(this.state.value)
     }
 
     @Composable
-    fun rememberUiState(): State<US> {
+    override fun rememberUiState(): State<US> {
         val uiState = initializeUiState()
 
         this@CaViewModel.uiState = remember {
@@ -48,11 +45,11 @@ abstract class CaViewModel<S : ScreenState, US : UiState> : ViewModel(), ActionH
         return this@CaViewModel.uiState
     }
 
-    fun updateUiState(update: (US) -> US) {
+    override fun updateUiState(update: (US) -> US) {
         uiState.value = update(uiState.value)
     }
 
-    fun executeOnUiState(uiState: (US) -> Unit) {
-        uiState(this.uiState.value)
+    override fun executeOnUiState(execute: (US) -> Unit) {
+        execute(this.uiState.value)
     }
 }

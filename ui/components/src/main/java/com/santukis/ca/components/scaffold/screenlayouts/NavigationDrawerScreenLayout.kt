@@ -27,7 +27,11 @@ abstract class NavigationDrawerScreenLayout<
             modifier = modifier,
             drawerContent = {
                 DrawerContent(
-                    modifier = Modifier,
+                    modifier = Modifier
+                        .drawerModifier(
+                            state = state,
+                            uiState = uiState
+                        ),
                     arguments = arguments,
                     state = state,
                     uiState = uiState,
@@ -45,7 +49,11 @@ abstract class NavigationDrawerScreenLayout<
             )
         ) {
             Content(
-                modifier = Modifier,
+                modifier = Modifier
+                    .contentModifier(
+                        state = state,
+                        uiState = uiState
+                    ),
                 arguments = arguments,
                 state = state,
                 uiState = uiState,
@@ -86,4 +94,16 @@ abstract class NavigationDrawerScreenLayout<
         state: S,
         uiState: US
     ): Color = DrawerDefaults.scrimColor
+
+    @Composable
+    protected open fun Modifier.drawerModifier(
+        state: S,
+        uiState: US
+    ) = this
+
+    @Composable
+    protected open fun Modifier.contentModifier(
+        state: S,
+        uiState: US
+    ) = this
 }

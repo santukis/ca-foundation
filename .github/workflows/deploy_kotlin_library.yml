@@ -62,11 +62,15 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v3
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.9
+
       - name: Build libraries
         run: ./gradlew :data:datasource:remote:assemble :data:repository:assemble :domain:assemble :injection:core:assembleRelease :injection:koin-provider:assembleRelease :ui:navigation:assembleRelease :ui:theme:assembleRelease :ui:components:assembleRelease
 
-      - name: Publish package
-        uses: gradle/actions/setup-gradle@v3
+      - name: Publish packages
         run: ./gradlew publish
 
         env:

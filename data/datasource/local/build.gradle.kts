@@ -11,6 +11,9 @@ android {
 }
 
 dependencies {
+    implementation(projects.data.repository)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.squareup.moshi)
+    implementation(libs.squareup.moshi.kotlin)
     ksp(libs.androidx.room.compiler)
 }

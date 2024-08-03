@@ -1,7 +1,7 @@
 package com.santukis.ca.components.scaffold.screenlayouts
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
@@ -93,8 +93,11 @@ abstract class ScaffoldScreenLayout<
         ) { paddingValues ->
             Content(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
+                    .contentModifier(
+                        state = state,
+                        uiState = uiState,
+                        paddingValues = paddingValues
+                    ),
                 arguments = arguments,
                 state = state,
                 uiState = uiState,
@@ -178,4 +181,14 @@ abstract class ScaffoldScreenLayout<
         state: S,
         uiState: US
     ): WindowInsets = ScaffoldDefaults.contentWindowInsets
+
+    @Composable
+    protected open fun Modifier.contentModifier(
+        state: S,
+        uiState: US,
+        paddingValues: PaddingValues
+    ) = this
+        .then(
+            padding(paddingValues)
+        )
 }

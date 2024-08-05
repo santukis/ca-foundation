@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 
 abstract class CaViewModel<S : ScreenState, US : UiState> :
     ViewModel(),
-    StateHandler<S, US> {
+    StateHolder<S, US> {
 
     private lateinit var state: MutableState<S>
 

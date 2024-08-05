@@ -3,7 +3,7 @@ package com.santukis.ca.components.scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 
-interface StateHandler<S : ScreenState, US : UiState>: ActionHandler {
+interface StateHolder<S : ScreenState, US : UiState>: ActionHandler {
 
     fun initializeState(): S
 

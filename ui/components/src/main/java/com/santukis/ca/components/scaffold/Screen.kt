@@ -22,9 +22,9 @@ abstract class Screen<S : ScreenState, US : UiState> {
         modifier: Modifier = Modifier,
         arguments: InputArguments = ScreenArguments(arguments = Unit)
     ) {
-        val stateHandler: StateHandler<S, US> = injectViewModel()
-        val state = stateHandler.rememberState().value
-        val uiState = stateHandler.rememberUiState().value
+        val stateHolder: StateHolder<S, US> = injectViewModel()
+        val state = stateHolder.rememberState().value
+        val uiState = stateHolder.rememberUiState().value
         val screenLayout = remember {
             screenLayout(
                 state = state,
@@ -32,7 +32,7 @@ abstract class Screen<S : ScreenState, US : UiState> {
             )
         }
 
-        stateHandler.InitializeHandler()
+        stateHolder.InitializeHandler()
 
         screenLayout.Layout(
             modifier = modifier,
@@ -40,7 +40,7 @@ abstract class Screen<S : ScreenState, US : UiState> {
             state = state,
             uiState = uiState,
             onAction = { action ->
-                stateHandler.execute(action)
+                stateHolder.execute(action)
             }
         )
     }

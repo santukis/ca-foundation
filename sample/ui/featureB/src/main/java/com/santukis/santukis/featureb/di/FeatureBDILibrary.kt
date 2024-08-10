@@ -16,6 +16,6 @@ class FeatureBDILibrary : KoinDILibrary() {
     override fun populate(dependencyInjector: DependencyInjector) {
         dependencyInjector.getDependency<NavigationGraphStore>(
             clazz = NavigationGraphStore::class
-        )?.addNavigationGraph(FeatureBNavigationGraph())
+        ).addNavigationGraph(FeatureBNavigationGraph())
     }
 }

@@ -13,5 +13,6 @@ test {
 }
 
 dependencies {
+    implementation(libs.kotlin.coroutines.core)
     testImplementation(libs.bundles.test)
 }

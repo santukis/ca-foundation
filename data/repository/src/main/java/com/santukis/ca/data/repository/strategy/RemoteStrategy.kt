@@ -1,10 +1,10 @@
 package com.santukis.ca.data.repository.strategy
 
-abstract class RemoteStrategy<Input, Output> : RepositoryStrategy<Input, Output> {
+interface RemoteStrategy<Input, Output> : RepositoryStrategy<Input, Output> {
 
-    protected abstract suspend fun loadFromRemote(input: Input): Output
+    suspend fun loadFromRemote(input: Input): Output
 
-    protected abstract suspend fun saveIntoLocal(output: Output): Output
+    suspend fun saveIntoLocal(output: Output): Output
 
     override suspend fun execute(input: Input): Output {
         val output = loadFromRemote(input)

@@ -5,6 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowSizeClass
+import androidx.window.core.layout.WindowSizeClass.Companion.HEIGHT_DP_EXPANDED_LOWER_BOUND
+import androidx.window.core.layout.WindowSizeClass.Companion.HEIGHT_DP_MEDIUM_LOWER_BOUND
+import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_EXPANDED_LOWER_BOUND
+import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import androidx.window.core.layout.WindowWidthSizeClass
 import androidx.window.layout.WindowMetricsCalculator
 
@@ -41,16 +45,16 @@ internal class DefaultWindowSizeClassState(
 ) : WindowSizeClassState {
 
     override fun getWidthSize(): WindowSizeClassState.Size =
-        when (windowSizeClass.windowWidthSizeClass) {
-            WindowWidthSizeClass.COMPACT -> WindowSizeClassState.Size.COMPAT
-            WindowWidthSizeClass.MEDIUM -> WindowSizeClassState.Size.MEDIUM
-            else -> WindowSizeClassState.Size.EXPANDED
+        when {
+            windowSizeClass.isWidthAtLeastBreakpoint(WIDTH_DP_EXPANDED_LOWER_BOUND) -> WindowSizeClassState.Size.EXPANDED
+            windowSizeClass.isWidthAtLeastBreakpoint(WIDTH_DP_MEDIUM_LOWER_BOUND) -> WindowSizeClassState.Size.MEDIUM
+            else -> WindowSizeClassState.Size.COMPAT
         }
 
     override fun getHeightSize(): WindowSizeClassState.Size =
-        when (windowSizeClass.windowHeightSizeClass) {
-            WindowHeightSizeClass.COMPACT -> WindowSizeClassState.Size.COMPAT
-            WindowHeightSizeClass.MEDIUM -> WindowSizeClassState.Size.MEDIUM
-            else -> WindowSizeClassState.Size.EXPANDED
+        when {
+            windowSizeClass.isHeightAtLeastBreakpoint(HEIGHT_DP_EXPANDED_LOWER_BOUND) -> WindowSizeClassState.Size.EXPANDED
+            windowSizeClass.isHeightAtLeastBreakpoint(HEIGHT_DP_MEDIUM_LOWER_BOUND) -> WindowSizeClassState.Size.MEDIUM
+            else -> WindowSizeClassState.Size.COMPAT
         }
 }

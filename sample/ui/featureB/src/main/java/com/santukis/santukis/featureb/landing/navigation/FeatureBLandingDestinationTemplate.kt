@@ -18,6 +18,7 @@ class FeatureBLandingDestinationTemplate : DestinationTemplate {
         listOf(
             navArgument(ANY_PARAM_KEY) {
                 type = NavType.StringType
+                defaultValue = ""
             }
         )
 }

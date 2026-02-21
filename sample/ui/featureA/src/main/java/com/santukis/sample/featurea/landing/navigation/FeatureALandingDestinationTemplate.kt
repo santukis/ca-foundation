@@ -17,6 +17,7 @@ class FeatureALandingDestinationTemplate : DestinationTemplate {
         listOf(
             navArgument(FEATURE_D_RESULT) {
                 type = NavType.StringType
+                defaultValue = ""
             }
         )
 }

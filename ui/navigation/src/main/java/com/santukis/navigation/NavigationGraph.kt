@@ -23,7 +23,7 @@ fun NavGraphBuilder.navigate(
 ) {
     composable(
         route = destination.template.template,
-        arguments =destination.template.getArguments(),
+        arguments = destination.template.getArguments(),
         deepLinks = destination.template.getDeepLinks(),
         enterTransition = destination.enterTransition(),
         exitTransition = destination.exitTransition(),

@@ -46,6 +46,7 @@ abstract class BoxScreenLayout<
             Content(
                 modifier = Modifier
                     .contentModifier(
+                        scope = this,
                         state = state,
                         uiState = uiState
                     ),
@@ -67,9 +68,9 @@ abstract class BoxScreenLayout<
         uiState: US
     ): Boolean = false
 
-    context(BoxScope)
     @Composable
     protected open fun Modifier.contentModifier(
+        scope: BoxScope,
         state: S,
         uiState: US
     ) = this

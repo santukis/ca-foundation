@@ -2,10 +2,10 @@ package com.santukis.sample.featurec.landing
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.navigation.InputArguments
-import com.santukis.ca.components.scaffold.screenlayouts.ScaffoldScreenLayout
-import com.santukis.ca.components.scaffold.states.ScaffoldState
+import com.santukis.ca.ui.navigation.InputArguments
+import com.santukis.ca.ui.scaffold.Action
+import com.santukis.ca.ui.scaffold.screenlayouts.ScaffoldScreenLayout
+import com.santukis.ca.ui.scaffold.states.ScaffoldState
 import com.santukis.sample.featurec.landing.navigation.FeatureCLandingInputArguments
 import com.santukis.sample.featurec.landing.views.FeatureCLandingScreenContent
 

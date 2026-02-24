@@ -11,7 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.ui.scaffold.Action
 import com.santukis.sample.featured.landing.FeatureDLandingNavigationAction.NavigateToFeatureAScreen
 import com.santukis.sample.featured.landing.FeatureDLandingState
 import com.santukis.sample.featured.landing.navigation.ToFeatureADestinationArguments

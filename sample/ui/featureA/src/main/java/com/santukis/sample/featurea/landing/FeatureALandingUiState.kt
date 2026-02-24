@@ -3,11 +3,11 @@ package com.santukis.sample.featurea.landing
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-import com.santukis.ca.components.scaffold.states.NavigationDrawerState
-import com.santukis.ca.components.scaffold.states.ScaffoldState
-import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
-import com.santukis.ca.components.scaffold.states.navigationDrawerUiState
-import com.santukis.ca.components.scaffold.states.scaffoldState
+import com.santukis.ca.ui.scaffold.states.NavigationDrawerState
+import com.santukis.ca.ui.scaffold.states.ScaffoldState
+import com.santukis.ca.ui.scaffold.states.ScreenConfigurationState
+import com.santukis.ca.ui.scaffold.states.navigationDrawerUiState
+import com.santukis.ca.ui.scaffold.states.scaffoldState
 
 interface FeatureALandingUiState : NavigationDrawerState, ScaffoldState
 

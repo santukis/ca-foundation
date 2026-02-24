@@ -1,8 +1,8 @@
 package com.santukis.santukis.featureb.landing
 
-import com.santukis.ca.components.scaffold.NavigationAction
-import com.santukis.navigation.NavigationArguments
-import com.santukis.navigation.PopBackStack
+import com.santukis.ca.ui.scaffold.NavigationAction
+import com.santukis.ca.ui.navigation.NavigationArguments
+import com.santukis.ca.ui.navigation.PopBackStack
 import com.santukis.santukis.featureb.landing.navigation.ToSecondaryScreenArguments
 
 sealed class FeatureBLandingNavigationAction<Arguments : NavigationArguments>(

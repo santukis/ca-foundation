@@ -1,7 +1,7 @@
 package com.santukis.sample.featurea.landing.navigation
 
 import android.os.Bundle
-import com.santukis.navigation.InputArguments
+import com.santukis.ca.ui.navigation.InputArguments
 
 class FeatureALandingInputArguments: InputArguments.ArgumentKey<Bundle, String> {
 

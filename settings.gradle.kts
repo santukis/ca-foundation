@@ -31,11 +31,7 @@ include(":injection:core")
 include(":injection:koin-provider")
 
 include(":domain")
-
 include(":data")
-
-include(":ui:navigation")
-include(":ui:theme")
-include(":ui:components")
+include(":ui")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

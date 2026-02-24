@@ -1,6 +1,6 @@
 package com.santukis.scaffold
 
-import com.santukis.navigation.ArgumentsMapper
+import com.santukis.ca.ui.navigation.ArgumentsMapper
 import com.santukis.sample.featurea.landing.navigation.FeatureAModel
 import com.santukis.sample.featurec.landing.navigation.FeatureCModel
 

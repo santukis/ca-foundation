@@ -1,7 +1,7 @@
 package com.santukis.sample.featurea.secondary
 
-import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.ui.scaffold.Screen
+import com.santukis.ca.ui.scaffold.screenlayouts.ScreenLayout
 import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
 
 class FeatureASecondaryScreen : Screen<FeatureASecondaryState, FeatureASecondaryScreenUiState>() {

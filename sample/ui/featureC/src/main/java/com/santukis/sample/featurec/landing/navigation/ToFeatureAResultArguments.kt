@@ -1,7 +1,7 @@
 package com.santukis.sample.featurec.landing.navigation
 
 import android.os.Parcelable
-import com.santukis.navigation.ResultArguments
+import com.santukis.ca.ui.navigation.ResultArguments
 import kotlinx.parcelize.Parcelize
 
 class ToFeatureAResultArguments(

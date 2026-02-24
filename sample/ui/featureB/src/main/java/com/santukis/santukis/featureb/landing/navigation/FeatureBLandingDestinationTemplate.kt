@@ -3,7 +3,7 @@ package com.santukis.santukis.featureb.landing.navigation
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import com.santukis.navigation.DestinationTemplate
+import com.santukis.ca.ui.navigation.DestinationTemplate
 
 class FeatureBLandingDestinationTemplate : DestinationTemplate {
 

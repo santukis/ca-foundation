@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.ui.scaffold.Action
 import com.santukis.sample.featurec.landing.FeatureCLandingNavigationAction.NavigateToFeatureAScreen
 import com.santukis.sample.featurec.landing.FeatureCLandingState
 import com.santukis.sample.featurec.landing.navigation.FeatureCModel

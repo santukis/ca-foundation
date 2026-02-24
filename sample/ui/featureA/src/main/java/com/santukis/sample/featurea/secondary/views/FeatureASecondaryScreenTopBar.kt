@@ -12,7 +12,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.ui.scaffold.Action
 import com.santukis.sample.featurea.secondary.FeatureASecondaryState
 import com.santukis.sample.featurea.secondary.states.FeatureASecondaryScreenUiState
 

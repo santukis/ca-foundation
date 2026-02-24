@@ -3,8 +3,8 @@ package com.santukis.sample.featured.host
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.santukis.navigation.ScreenArguments
-import com.santukis.theme.ScaffoldTheme
+import com.santukis.ca.ui.navigation.ScreenArguments
+import com.santukis.ca.ui.theme.ScaffoldTheme
 
 class FeatureDActivity : ComponentActivity() {
 

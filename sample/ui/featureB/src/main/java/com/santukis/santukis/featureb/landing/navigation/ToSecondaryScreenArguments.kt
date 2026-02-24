@@ -1,6 +1,6 @@
 package com.santukis.santukis.featureb.landing.navigation
 
-import com.santukis.navigation.DestinationArgumentsForResult
+import com.santukis.ca.ui.navigation.DestinationArgumentsForResult
 
 class ToSecondaryScreenArguments(
     override val onResult: (String) -> Unit

@@ -1,8 +1,8 @@
 package com.santukis.sample.featurea.landing
 
 import androidx.compose.runtime.Composable
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.CaViewModel
+import com.santukis.ca.ui.scaffold.Action
+import com.santukis.ca.ui.scaffold.CaViewModel
 
 class FeatureALandingViewModel : CaViewModel<FeatureALandingState, FeatureALandingUiState>() {
 

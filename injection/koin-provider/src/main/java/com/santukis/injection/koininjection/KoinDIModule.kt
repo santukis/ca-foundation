@@ -1,8 +1,8 @@
 package com.santukis.injection.koininjection
 
-import com.santukis.ca.components.scaffold.CaViewModel
-import com.santukis.ca.components.scaffold.ScreenState
-import com.santukis.ca.components.scaffold.UiState
+import com.santukis.ca.ui.scaffold.CaViewModel
+import com.santukis.ca.ui.scaffold.ScreenState
+import com.santukis.ca.ui.scaffold.UiState
 import com.santukis.injection.core.DIModule
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.definition.KoinDefinition

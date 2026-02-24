@@ -2,7 +2,7 @@ package com.santukis.injection.koininjection
 
 import android.content.Context
 import androidx.compose.runtime.Composable
-import com.santukis.ca.components.scaffold.CaViewModel
+import com.santukis.ca.ui.scaffold.CaViewModel
 import com.santukis.injection.core.DIGraph
 import com.santukis.injection.core.DependencyInjector
 import org.koin.android.ext.koin.androidContext

@@ -12,7 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.ui.scaffold.Action
 import com.santukis.santukis.featureb.landing.FeatureBLandingNavigationAction.GoBack
 import com.santukis.santukis.featureb.landing.FeatureBLandingNavigationAction.NavigateToSecondaryScreen
 import com.santukis.santukis.featureb.landing.FeatureBLandingState

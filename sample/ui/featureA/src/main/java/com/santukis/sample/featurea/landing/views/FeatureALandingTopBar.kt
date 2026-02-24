@@ -12,8 +12,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.navigation.InputArguments
+import com.santukis.ca.ui.navigation.InputArguments
+import com.santukis.ca.ui.scaffold.Action
 import com.santukis.sample.featurea.landing.FeatureALandingAction
 import com.santukis.sample.featurea.landing.FeatureALandingState
 

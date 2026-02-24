@@ -1,10 +1,10 @@
 package com.santukis.santukis.featureb.secondary
 
 import androidx.compose.runtime.Composable
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.CaViewModel
-import com.santukis.ca.components.scaffold.states.ScaffoldState
-import com.santukis.ca.components.scaffold.states.scaffoldState
+import com.santukis.ca.ui.scaffold.Action
+import com.santukis.ca.ui.scaffold.CaViewModel
+import com.santukis.ca.ui.scaffold.states.ScaffoldState
+import com.santukis.ca.ui.scaffold.states.scaffoldState
 
 class FeatureBSecondaryViewModel :
     CaViewModel<FeatureBSecondaryState, ScaffoldState>() {

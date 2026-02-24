@@ -1,11 +1,11 @@
 package com.santukis.scaffold.di
 
-import com.santukis.ca.components.scaffold.CaViewModel
+import com.santukis.ca.ui.navigation.ArgumentsMapper
+import com.santukis.ca.ui.navigation.NavigationGraph
+import com.santukis.ca.ui.navigation.NavigationGraphStore
+import com.santukis.ca.ui.navigation.NavigationGraphStoreProvider
+import com.santukis.ca.ui.scaffold.CaViewModel
 import com.santukis.injection.koininjection.KoinDIModule
-import com.santukis.navigation.ArgumentsMapper
-import com.santukis.navigation.NavigationGraph
-import com.santukis.navigation.NavigationGraphStore
-import com.santukis.navigation.NavigationGraphStoreProvider
 import com.santukis.scaffold.AppArgumentsMapper
 import com.santukis.scaffold.landing.AppLandingScreen
 import com.santukis.scaffold.landing.AppLandingViewModel

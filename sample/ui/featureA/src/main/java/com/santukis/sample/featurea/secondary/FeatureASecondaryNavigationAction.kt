@@ -1,8 +1,8 @@
 package com.santukis.sample.featurea.secondary
 
-import com.santukis.ca.components.scaffold.NavigationAction
-import com.santukis.navigation.NavigationArguments
-import com.santukis.navigation.PopBackStack
+import com.santukis.ca.ui.navigation.NavigationArguments
+import com.santukis.ca.ui.navigation.PopBackStack
+import com.santukis.ca.ui.scaffold.NavigationAction
 
 sealed class FeatureASecondaryNavigationAction<Arguments : NavigationArguments>(
     val arguments: Arguments

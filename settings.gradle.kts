@@ -32,9 +32,7 @@ include(":injection:koin-provider")
 
 include(":domain")
 
-include(":data:repository")
-include(":data:datasource:remote")
-include(":data:datasource:local")
+include(":data")
 
 include(":ui:navigation")
 include(":ui:theme")

@@ -1,9 +1,0 @@
-apply from: "$rootDir/gradle/configuration/build/kotlin_library_module.gradle"
-apply plugin: 'com.google.devtools.ksp'
-
-dependencies {
-    implementation projects.domain
-    implementation libs.bundles.retrofit
-    implementation libs.kotlin.coroutines.core
-    ksp libs.squareup.moshi.codegen
-}

@@ -17,12 +17,12 @@ class HttpClient(
     val retrofit: Retrofit
 ) : ServiceStore {
 
-    private var apis: MutableMap<ServiceKey, Service> = mutableMapOf()
+    private var services: MutableMap<ServiceKey, Service> = mutableMapOf()
 
-    override operator fun <A : Service> get(key: ServiceKey): A? = apis[key] as? A
+    override operator fun <A : Service> get(key: ServiceKey): A? = services[key] as? A
 
     override fun addService(serviceKey: ServiceKey, service: Class<out Service>) {
-        apis[serviceKey] = retrofit.create(service)
+        services[serviceKey] = retrofit.create(service)
     }
 
     suspend inline fun <reified E, S> response(call: Call<S>?): Response<E?, S> =

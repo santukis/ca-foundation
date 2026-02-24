@@ -1,7 +1,7 @@
 package com.santukis.ca.data.datasource.local
 
 import android.content.Context
-import com.santukis.ca.data.repository.source.DataSource
+import com.santukis.ca.data.datasource.DataSource
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.lang.reflect.Type

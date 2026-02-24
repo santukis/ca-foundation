@@ -1,10 +1,10 @@
 package com.santukis.sample.featurea.landing
 
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.ScreenDestination
-import com.santukis.navigation.DestinationTemplate
-import com.santukis.navigation.Router
+import com.santukis.ca.ui.scaffold.Action
+import com.santukis.ca.ui.scaffold.Screen
+import com.santukis.ca.ui.scaffold.ScreenDestination
+import com.santukis.ca.ui.navigation.DestinationTemplate
+import com.santukis.ca.ui.navigation.Router
 import com.santukis.sample.featurea.landing.FeatureALandingNavigationAction.NavigateToFeatureB
 import com.santukis.sample.featurea.landing.FeatureALandingNavigationAction.NavigateToFeatureC
 import com.santukis.sample.featurea.landing.FeatureALandingNavigationAction.NavigateToFeatureD

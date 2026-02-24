@@ -9,7 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.santukis.ca.components.scaffold.Action
+import com.santukis.ca.ui.scaffold.Action
 import com.santukis.sample.featurea.landing.FeatureALandingAction
 import com.santukis.sample.featurea.landing.FeatureALandingNavigationAction.NavigateToFeatureB
 import com.santukis.sample.featurea.landing.FeatureALandingNavigationAction.NavigateToFeatureC

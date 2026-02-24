@@ -5,15 +5,12 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import com.santukis.ca.components.scaffold.UiState
-import com.santukis.ca.components.scaffold.states.BottomSheetState
-import com.santukis.ca.components.scaffold.states.ScaffoldState
-import com.santukis.ca.components.scaffold.states.ScreenConfigurationState
-import com.santukis.ca.components.scaffold.states.bottomSheetState
-import com.santukis.ca.components.scaffold.states.scaffoldState
+import com.santukis.ca.ui.scaffold.UiState
+import com.santukis.ca.ui.scaffold.states.BottomSheetState
+import com.santukis.ca.ui.scaffold.states.ScaffoldState
+import com.santukis.ca.ui.scaffold.states.ScreenConfigurationState
+import com.santukis.ca.ui.scaffold.states.bottomSheetState
+import com.santukis.ca.ui.scaffold.states.scaffoldState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

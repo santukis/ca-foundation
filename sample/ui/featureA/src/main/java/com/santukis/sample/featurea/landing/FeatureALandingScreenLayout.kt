@@ -8,9 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.navigation.InputArguments
-import com.santukis.ca.components.scaffold.screenlayouts.NavigationDrawerScreenLayout
+import com.santukis.ca.ui.scaffold.Action
+import com.santukis.ca.ui.navigation.InputArguments
+import com.santukis.ca.ui.scaffold.screenlayouts.NavigationDrawerScreenLayout
 
 class FeatureALandingScreenLayout : NavigationDrawerScreenLayout<
         FeatureALandingState, FeatureALandingUiState>() {

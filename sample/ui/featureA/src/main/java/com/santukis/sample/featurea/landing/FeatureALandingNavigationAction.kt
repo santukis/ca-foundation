@@ -1,7 +1,7 @@
 package com.santukis.sample.featurea.landing
 
-import com.santukis.ca.components.scaffold.NavigationAction
-import com.santukis.navigation.NavigationArguments
+import com.santukis.ca.ui.scaffold.NavigationAction
+import com.santukis.ca.ui.navigation.NavigationArguments
 import com.santukis.sample.featurea.landing.navigation.ToFeatureBArguments
 import com.santukis.sample.featurea.landing.navigation.ToFeatureCArguments
 import com.santukis.sample.featurea.landing.navigation.ToFeatureDArguments

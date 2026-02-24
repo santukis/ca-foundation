@@ -3,9 +3,9 @@ package com.santukis.scaffold.di
 import com.santukis.injection.koininjection.KoinDILibrary
 import com.santukis.injection.koininjection.KoinDIModule
 
-class AppDILibrary : com.santukis.injection.koininjection.KoinDILibrary() {
+class AppDILibrary : KoinDILibrary() {
 
-    override fun getModules(): List<com.santukis.injection.koininjection.KoinDIModule> =
+    override fun getModules(): List<KoinDIModule> =
         listOf(
             AppDIModule()
         )

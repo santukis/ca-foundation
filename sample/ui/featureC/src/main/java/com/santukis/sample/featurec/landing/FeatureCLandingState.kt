@@ -1,5 +1,5 @@
 package com.santukis.sample.featurec.landing
 
-import com.santukis.ca.components.scaffold.ScreenState
+import com.santukis.ca.ui.scaffold.ScreenState
 
 class FeatureCLandingState : ScreenState

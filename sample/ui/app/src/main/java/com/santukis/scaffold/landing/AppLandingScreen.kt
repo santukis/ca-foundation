@@ -1,9 +1,9 @@
 package com.santukis.scaffold.landing
 
-import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.screenlayouts.NavigationScreenLayout
-import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
-import com.santukis.ca.components.scaffold.states.NavigationState
+import com.santukis.ca.ui.scaffold.Screen
+import com.santukis.ca.ui.scaffold.screenlayouts.NavigationScreenLayout
+import com.santukis.ca.ui.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.ui.scaffold.states.NavigationState
 
 class AppLandingScreen : Screen<AppLandingState, NavigationState>() {
 

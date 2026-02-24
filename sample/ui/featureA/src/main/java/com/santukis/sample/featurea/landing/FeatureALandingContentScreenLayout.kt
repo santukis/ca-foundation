@@ -4,10 +4,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.santukis.ca.components.scaffold.Action
-import com.santukis.navigation.InputArguments
-import com.santukis.ca.components.scaffold.screenlayouts.ScaffoldScreenLayout
-import com.santukis.ca.components.scaffold.states.ScaffoldState
+import com.santukis.ca.ui.scaffold.Action
+import com.santukis.ca.ui.navigation.InputArguments
+import com.santukis.ca.ui.scaffold.screenlayouts.ScaffoldScreenLayout
+import com.santukis.ca.ui.scaffold.states.ScaffoldState
 import com.santukis.sample.featurea.landing.navigation.FeatureALandingInputArguments
 import com.santukis.sample.featurea.landing.views.FeatureALandingScreenContent
 import com.santukis.sample.featurea.landing.views.FeatureALandingTopBar

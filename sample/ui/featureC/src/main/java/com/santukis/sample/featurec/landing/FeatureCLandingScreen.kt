@@ -1,8 +1,9 @@
 package com.santukis.sample.featurec.landing
 
-import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
-import com.santukis.ca.components.scaffold.states.ScaffoldState
+import com.santukis.ca.ui.scaffold.Screen
+import com.santukis.ca.ui.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.ui.scaffold.states.ScaffoldState
+
 
 class FeatureCLandingScreen : Screen<FeatureCLandingState, ScaffoldState>() {
 

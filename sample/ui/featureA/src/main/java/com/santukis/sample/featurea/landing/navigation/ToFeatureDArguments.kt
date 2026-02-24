@@ -1,6 +1,6 @@
 package com.santukis.sample.featurea.landing.navigation
 
-import com.santukis.navigation.DestinationArguments
+import com.santukis.ca.ui.navigation.DestinationArguments
 
 class ToFeatureDArguments(
     private val anyParam: String,

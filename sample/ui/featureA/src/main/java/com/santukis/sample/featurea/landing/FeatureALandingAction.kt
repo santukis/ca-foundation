@@ -1,8 +1,8 @@
 package com.santukis.sample.featurea.landing
 
-import com.santukis.ca.components.scaffold.ScreenAction
-import com.santukis.ca.components.scaffold.actions.CloseDrawer
-import com.santukis.ca.components.scaffold.actions.OpenDrawer
+import com.santukis.ca.ui.scaffold.ScreenAction
+import com.santukis.ca.ui.scaffold.actions.CloseDrawer
+import com.santukis.ca.ui.scaffold.actions.OpenDrawer
 
 sealed class FeatureALandingAction : ScreenAction {
 

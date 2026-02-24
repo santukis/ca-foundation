@@ -1,6 +1,6 @@
 package com.santukis.sample.featurea.landing
 
-import com.santukis.ca.components.scaffold.ScreenState
+import com.santukis.ca.ui.scaffold.ScreenState
 
 class FeatureALandingState(
     val field01: String = "",

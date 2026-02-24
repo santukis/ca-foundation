@@ -12,5 +12,5 @@ android {
 
 dependencies {
     implementation(projects.injection.core)
-    implementation(projects.ui.components)
+    implementation(projects.ui)
 }

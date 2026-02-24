@@ -1,6 +1,6 @@
 package com.santukis.sample.featured.landing.navigation
 
-import com.santukis.navigation.DestinationTemplate
+import com.santukis.ca.ui.navigation.DestinationTemplate
 
 class FeatureDLandingDestinationTemplate : DestinationTemplate {
 

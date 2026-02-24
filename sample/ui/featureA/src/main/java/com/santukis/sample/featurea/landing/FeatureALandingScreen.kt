@@ -1,7 +1,7 @@
 package com.santukis.sample.featurea.landing
 
-import com.santukis.ca.components.scaffold.Screen
-import com.santukis.ca.components.scaffold.screenlayouts.ScreenLayout
+import com.santukis.ca.ui.scaffold.Screen
+import com.santukis.ca.ui.scaffold.screenlayouts.ScreenLayout
 
 class FeatureALandingScreen : Screen<FeatureALandingState, FeatureALandingUiState>() {
 

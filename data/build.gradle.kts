@@ -8,13 +8,16 @@ plugins {
 apply(from = "$rootDir/gradle/configuration/build/android_module.gradle")
 
 android {
-    namespace = "com.santukis.ca.data.datasource.local"
+    namespace = "com.santukis.ca.data"
 }
 
 dependencies {
-    implementation(projects.data.repository)
+    implementation(projects.domain)
     implementation(libs.androidx.room.runtime)
     implementation(libs.squareup.moshi)
     implementation(libs.squareup.moshi.kotlin)
     ksp(libs.androidx.room.compiler)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.kotlin.coroutines.core)
+    ksp(libs.squareup.moshi.codegen)
 }

@@ -13,5 +13,5 @@ android {
 dependencies {
     implementation(libs.androidx.window)
     implementation(libs.androidx.window.core)
-    implementation(projects.injection.core)
+    implementation(projects.injection)
 }

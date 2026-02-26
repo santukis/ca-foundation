@@ -2,7 +2,7 @@ package com.santukis.injection.koininjection
 
 import android.content.Context
 import androidx.compose.runtime.Composable
-import com.santukis.ca.ui.scaffold.CaViewModel
+import androidx.lifecycle.ViewModel
 import com.santukis.injection.core.DIGraph
 import com.santukis.injection.core.DependencyInjector
 import org.koin.android.ext.koin.androidContext
@@ -60,7 +60,7 @@ class KoinDependencyInjector : DependencyInjector {
         into: KClass<*>
     ): T? =
         when {
-            dependency == CaViewModel::class -> injectViewModel(into = into) as? T
+            dependency == ViewModel::class -> injectViewModel(into = into) as? T
             else -> injectDependency(
                 dependency = dependency,
                 into = into
@@ -70,7 +70,7 @@ class KoinDependencyInjector : DependencyInjector {
     @Composable
     private fun injectViewModel(
         into: KClass<*>
-    ): CaViewModel<*, *> =
+    ): ViewModel =
         koinViewModel(
             scope = getKoin()
                 .getOrCreateScope(

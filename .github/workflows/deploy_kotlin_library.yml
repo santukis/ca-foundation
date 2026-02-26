@@ -68,7 +68,7 @@ jobs:
           gradle-version: 8.9
 
       - name: Build libraries
-        run: ./gradlew :data:assemble :domain:assemble :injection:assembleRelease :ui:assembleRelease
+        run: ./gradlew :data:assembleRelease :domain:assemble :injection:assembleRelease :ui:assembleRelease
 
       - name: Publish packages
         run: ./gradlew publish

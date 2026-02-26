@@ -11,6 +11,7 @@ import com.santukis.scaffold.landing.AppLandingScreen
 import com.santukis.scaffold.landing.AppLandingViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -23,7 +24,7 @@ class AppDIModule : KoinDIModule() {
             single<NavigationGraph> { get<NavigationGraphStore>() }
 
             scope<AppLandingScreen> {
-                caViewModelOf(::AppLandingViewModel) bind CaViewModel::class
+                viewModelOf(::AppLandingViewModel) bind CaViewModel::class
             }
         }
 }

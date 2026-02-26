@@ -11,7 +11,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.injection.core)
-    implementation(projects.injection.koinProvider)
+    implementation(projects.injection)
     implementation(projects.ui)
 }

@@ -27,9 +27,7 @@ include(":sample:ui:featureB")
 include(":sample:ui:featureC")
 include(":sample:ui:featureD")
 
-include(":injection:core")
-include(":injection:koin-provider")
-
+include(":injection")
 include(":domain")
 include(":data")
 include(":ui")

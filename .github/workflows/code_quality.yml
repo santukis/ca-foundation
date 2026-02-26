@@ -19,7 +19,7 @@ jobs:
           cache: gradle
 
       - name: Unit Test
-        run: ./gradlew :domain:test ui:navigation:test :ui:theme:test
+        run: ./gradlew :domain:test :data:test :injection:test :ui:test
         continue-on-error: false
 
       - name: Android Test Report

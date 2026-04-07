@@ -39,13 +39,11 @@ interface NavigationDrawerState : UiState, VisibilityState {
 fun navigationDrawerUiState(
     initialValue: DrawerValue = DrawerValue.Closed
 ): NavigationDrawerState {
-    val screenConfigurationState = screenConfigurationState()
     val drawerState = rememberDrawerState(initialValue = initialValue)
     val coroutineScope = rememberCoroutineScope()
 
     return DefaultNavigationDrawerState(
         drawerState = drawerState,
-        screenConfigurationState = screenConfigurationState,
         coroutineScope = coroutineScope
     )
 }
@@ -56,12 +54,10 @@ fun navigationDrawerUiState(
  * It uses a [CoroutineScope] to launch suspend functions for opening and closing the drawer.
  *
  * @param drawerState The underlying Material 3 [DrawerState].
- * @param screenConfigurationState The configuration state for the screen.
  * @param coroutineScope The coroutine scope used to animate the drawer's visibility.
  */
 internal class DefaultNavigationDrawerState(
     override val drawerState: DrawerState,
-    override val screenConfigurationState: ScreenConfigurationState,
     private val coroutineScope: CoroutineScope
 ) : NavigationDrawerState {
 

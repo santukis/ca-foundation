@@ -31,22 +31,16 @@ interface ScaffoldState : UiState {
 @Composable
 fun scaffoldState(
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
-): ScaffoldState {
-    val screenConfigurationState = screenConfigurationState()
-
-    return DefaultScaffoldState(
+): ScaffoldState =
+    DefaultScaffoldState(
         snackbarHostState = snackbarHostState,
-        screenConfigurationState = screenConfigurationState
     )
-}
 
 /**
  * The default implementation of [ScaffoldState].
  *
  * @param snackbarHostState The state for the snackbar host.
- * @param screenConfigurationState The configuration state for the screen.
  */
 internal class DefaultScaffoldState(
     override val snackbarHostState: SnackbarHostState,
-    override val screenConfigurationState: ScreenConfigurationState
 ) : ScaffoldState

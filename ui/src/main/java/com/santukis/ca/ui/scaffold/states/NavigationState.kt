@@ -49,25 +49,19 @@ fun navigationState(
     ),
     navigationGraph: NavigationGraph = DependencyInjectorProvider
         .getDependency(clazz = NavigationGraph::class)
-): NavigationState {
-    val screenConfigurationState = screenConfigurationState()
-
-    return DefaultNavigationState(
+): NavigationState =
+     DefaultNavigationState(
         router = router,
         navigationGraph = navigationGraph,
-        screenConfigurationState = screenConfigurationState
     )
-}
 
 /**
  * The default implementation of [NavigationState].
  *
  * @param router The router for navigation.
  * @param navigationGraph The navigation graph.
- * @param screenConfigurationState The screen configuration state.
  */
 internal class DefaultNavigationState(
     override val router: Router,
     override val navigationGraph: NavigationGraph,
-    override val screenConfigurationState: ScreenConfigurationState
 ) : NavigationState

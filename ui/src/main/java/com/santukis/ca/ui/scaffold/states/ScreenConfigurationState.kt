@@ -4,11 +4,12 @@ import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.platform.LocalConfiguration
+import com.santukis.ca.ui.scaffold.UiState
 
 /**
  * Represents the configuration state of the screen, including window size and orientation.
  */
-interface ScreenConfigurationState {
+interface ScreenConfigurationState : UiState {
 
     /**
      * The state of the window size class, which helps in creating adaptive layouts.

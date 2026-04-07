@@ -11,7 +11,7 @@ class FeatureASecondaryScreen : Screen<FeatureASecondaryState, FeatureASecondary
         state: FeatureASecondaryState,
         uiState: FeatureASecondaryScreenUiState
     ): ScreenLayout<FeatureASecondaryState, FeatureASecondaryScreenUiState> =
-        when (uiState.screenConfigurationState.isPortrait()) {
+        when (uiState.isPortrait()) {
             true -> FeatureASecondaryPortraitScreenLayout()
             false -> FeatureASecondaryLandscapeScreenLayout()
         }

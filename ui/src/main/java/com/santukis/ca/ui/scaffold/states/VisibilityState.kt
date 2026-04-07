@@ -1,10 +1,12 @@
 package com.santukis.ca.ui.scaffold.states
 
+import com.santukis.ca.ui.scaffold.UiState
+
 /**
  * Defines a contract for managing the visibility of a UI component.
  * It provides methods to check visibility, show, hide, and toggle the component's state.
  */
-interface VisibilityState {
+interface VisibilityState : UiState {
 
     /**
      * Checks if the component is currently visible.

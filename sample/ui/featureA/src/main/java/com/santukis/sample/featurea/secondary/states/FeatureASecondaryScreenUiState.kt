@@ -11,6 +11,8 @@ import com.santukis.ca.ui.scaffold.states.ScaffoldState
 import com.santukis.ca.ui.scaffold.states.ScreenConfigurationState
 import com.santukis.ca.ui.scaffold.states.bottomSheetState
 import com.santukis.ca.ui.scaffold.states.scaffoldState
+import com.santukis.ca.ui.scaffold.states.screenConfigurationState
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -19,18 +21,22 @@ fun featureASecondaryScreenUiState(
     bottomSheetState: BottomSheetState = bottomSheetState()
 ): FeatureASecondaryScreenUiState {
     val scaffoldState = scaffoldState()
+    val screenConfigurationState = screenConfigurationState()
+
 
     return FeatureASecondaryScreenUiState(
         lazyListState = lazyListState,
         bottomSheetState = bottomSheetState,
-        snackbarHostState = scaffoldState.snackbarHostState,
-        screenConfigurationState = scaffoldState.screenConfigurationState
+        scaffoldState = scaffoldState,
+        screenConfigurationState = screenConfigurationState
     )
 }
 
 class FeatureASecondaryScreenUiState(
     val lazyListState: LazyListState,
     val bottomSheetState: BottomSheetState,
-    override val snackbarHostState: SnackbarHostState,
-    override val screenConfigurationState: ScreenConfigurationState
-) : UiState, ScaffoldState
+    scaffoldState: ScaffoldState,
+    screenConfigurationState: ScreenConfigurationState
+) : UiState,
+    ScaffoldState by scaffoldState,
+    ScreenConfigurationState by screenConfigurationState

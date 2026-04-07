@@ -8,6 +8,7 @@ import com.santukis.sample.featurea.secondary.FeatureASecondaryScreen
 import com.santukis.sample.featurea.secondary.FeatureASecondaryViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
